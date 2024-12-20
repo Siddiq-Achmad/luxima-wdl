@@ -1,7 +1,12 @@
 "use client";
 
 import React from "react";
-import { Button, Input, Checkbox, Link, Divider } from "@nextui-org/react";
+
+import {Button} from "@nextui-org/button";
+import {Input} from "@nextui-org/input";
+import {Link} from "@nextui-org/link";
+import {Divider} from "@nextui-org/divider";
+
 import { Icon } from "@iconify/react";
 import { siteConfig } from "@/config/site";
 import { Logo } from "@/components/icons";
