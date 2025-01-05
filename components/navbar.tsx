@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -28,8 +29,11 @@ import {
   FacebookIcon,
 } from "@/components/icons";
 import { LogIn } from "lucide-react";
+import React from "react";
 
 export const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   const searchInput = (
     <Input
       aria-label="Search"
@@ -52,7 +56,12 @@ export const Navbar = () => {
   );
 
   return (
-    <NextUINavbar maxWidth="xl" position="sticky">
+    <NextUINavbar
+      maxWidth="xl"
+      position="sticky"
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+    >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
@@ -107,10 +116,10 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        <NavbarItem className="hidden lg:flex">
+        <NavbarItem className="hidden lg:flex ">
           <Button
             as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
+            className="text-sm font-normal text-primary bg-default-100"
             href={siteConfig.links.login}
             endContent={<LogIn className="text-primary" />}
             variant="flat"

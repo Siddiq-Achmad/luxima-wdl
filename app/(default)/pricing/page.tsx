@@ -2,6 +2,7 @@
 import { title } from "@/components/primitives";
 import React from "react";
 import { Check } from "lucide-react";
+import { motion } from "framer-motion";
 import {
   Button,
   Card,
@@ -45,7 +46,12 @@ export default function Component() {
           }}
         />
       </div>
-      <div className="flex max-w-xl flex-col text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex max-w-xl flex-col text-center"
+      >
         <h4 className={`${title()} font-medium leading-7 text-secondary`}>
           Pricing
         </h4>
@@ -56,7 +62,7 @@ export default function Component() {
         <h2 className="text-large">
           Discover the ideal plan, beginning at under $2 per week.
         </h2>
-      </div>
+      </motion.div>
       <Spacer y={8} />
       <Tabs
         classNames={{
@@ -83,7 +89,17 @@ export default function Component() {
         <Tab key={FrequencyEnum.Quarterly} title="Pay Quarterly" />
       </Tabs>
       <Spacer y={12} />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          duration: 0.5,
+          delay: 0.5,
+        }}
+        className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      >
         {tiers.map((tier) => (
           <Card
             key={tier.key}
@@ -144,7 +160,7 @@ export default function Component() {
             </CardFooter>
           </Card>
         ))}
-      </div>
+      </motion.div>
       <Spacer y={12} />
       <div className="flex py-2">
         <p className="text-default-400">

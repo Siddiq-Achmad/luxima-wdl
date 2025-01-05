@@ -1,6 +1,8 @@
+"use client";
 import { title } from "@/components/primitives";
 import Image from "next/image";
 import { Award, Users, Heart, Crown } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
@@ -14,19 +16,34 @@ export default function AboutPage() {
           className="object-cover opacity-40"
         />
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center text-white"
+          >
             <h1 className={`${title()} text-5xl font-bold mb-4`}>About Us</h1>
             <p className="text-xl max-w-2xl mx-auto">
               Connecting couples with exceptional wedding professionals since
               2020
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Our Story */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            duration: 0.5,
+            delay: 0.5,
+          }}
+          className="container mx-auto px-4"
+        >
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Our Story</h2>
             <p className="text-lg text-muted-foreground mb-8">
@@ -41,12 +58,22 @@ export default function AboutPage() {
               and exceptional service.
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Stats */}
       <section className="bg-primary/5 py-16">
-        <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            duration: 0.5,
+            delay: 0.8,
+          }}
+          className="container mx-auto px-4"
+        >
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { icon: Users, label: "Happy Couples", value: "10,000+" },
@@ -63,12 +90,22 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Team */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            duration: 0.5,
+            delay: 1,
+          }}
+          className="container mx-auto px-4"
+        >
           <h2 className="text-3xl font-bold text-center mb-12">
             Our Leadership Team
           </h2>
@@ -111,7 +148,7 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
