@@ -1,12 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
-import { Modal, ModalBody, Image, Grid } from "@nextui-org/react";
+import React, { useEffect, useState } from "react";
+import { Modal, ModalBody, Image, Card, CardHeader } from "@nextui-org/react";
 import { motion } from "framer-motion";
+import axios from "axios";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
 
-const VendorGallery = ({ images }: { images: string[] }) => {
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+
+interface VendorGalleryProps {
+  vendorName: string;
+}
+
+const VendorGallery: React.FC<VendorGalleryProps> = ({ vendorName }) => {
+  const [images, setImages] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
   const [visible, setVisible] = useState(false);
   const [activeImage, setActiveImage] = useState<string | null>(null);
+
+  const UNSPLASH_ACCESS_KEY = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY;
 
   const openModal = (image: string) => {
     setActiveImage(image);
@@ -18,33 +34,86 @@ const VendorGallery = ({ images }: { images: string[] }) => {
     setVisible(false);
   };
 
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.unsplash.com/search/photos",
+          {
+            params: {
+              query: vendorName,
+              per_page: 10,
+            },
+            headers: {
+              Authorization: `Client-ID ${UNSPLASH_ACCESS_KEY}`,
+            },
+          }
+        );
+
+        const fetchedImages = response.data.results.map(
+          (img: any) => img.urls.small
+        );
+        setImages(fetchedImages);
+      } catch (err) {
+        setError("Gagal memuat gambar dari Unsplash");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchImages();
+  }, [vendorName]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div>
-      <Grid.Container gap={2} justify="center">
-        {images.map((image, index) => (
-          <Grid xs={4} key={index}>
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => openModal(image)}
-              style={{
-                cursor: "pointer",
-                overflow: "hidden",
-                borderRadius: "8px",
-              }}
-            >
-              <Image
+      <div className="container gap-2 mb-4 flex">
+        <Swiper
+          navigation={true}
+          className="gallery-slider"
+          spaceBetween={10}
+          slidesPerView={1}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Autoplay, Navigation]}
+        >
+          {images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <img
                 src={image}
-                alt={`Portfolio ${index + 1}`}
-                objectFit="cover"
-                height={150}
+                alt={`Gallery image ${index + 1}`}
+                className="rounded-lg w-full h-64 object-cover"
               />
-            </motion.div>
-          </Grid>
-        ))}
-      </Grid.Container>
+              <div className="title text-center">Image {index + 1}</div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
-      <Modal open={visible} onClose={closeModal} closeButton>
+      {/* <Modal open={visible} onClose={closeModal} closeButton>
         <ModalBody>
           {activeImage && (
             <Image
@@ -54,7 +123,7 @@ const VendorGallery = ({ images }: { images: string[] }) => {
             />
           )}
         </ModalBody>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };

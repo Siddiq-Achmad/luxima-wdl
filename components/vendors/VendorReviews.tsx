@@ -19,7 +19,7 @@ export default function Component({ reviews }: VendorReviewsProps) {
   });
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-2 md:px-6 lg:px-8 mt-10">
+    <div>
       <header className="mb-8 flex flex-wrap justify-between gap-4 md:px-2">
         <div className="flex items-center gap-2">
           <h1 className="text-medium font-semibold md:text-large">Reviews</h1>
@@ -75,6 +75,6 @@ export default function Component({ reviews }: VendorReviewsProps) {
         onClose={onClose}
         onOpenChange={onOpenChange}
       />
-    </section>
+    </div>
   );
 }

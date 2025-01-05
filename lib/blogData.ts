@@ -1,4 +1,4 @@
-import { avatar } from "@nextui-org/theme";
+
 
 export interface BlogProps {
   slug: string;
@@ -24,7 +24,6 @@ export interface BlogProps {
       whatsapp?: string;
     };
   };
-  relatedPosts: BlogProps[];
 }
 
 export const blogs: BlogProps[] = [
@@ -52,26 +51,7 @@ export const blogs: BlogProps[] = [
         whatsapp: "https://wa.me/1234567890",
       },
     },
-    relatedPosts: [
-      {
-        slug: "wedding-venue-reviews",
-        title: "Top Wedding Venues in 2024",
-        subtitle: "Discover the Best Places to Host Your Wedding",
-        category: "Venues",
-        tags: ["wedding", "venues"],
-        image: "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-        content: "Find the most beautiful wedding venues...",
-        author: {
-          name: "Jane Smith",
-          avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-          bio: "Event planner and wedding venue specialist.",
-          social: {},
-        },
-        relatedPosts: [],
-        excerpt: "Get the inside scoop on the top wedding venues in 2024.",
-        date: "2024-03-15",
-      },
-    ],
+    
   },
   {
     slug: "wedding-trends-2024",
@@ -98,26 +78,7 @@ export const blogs: BlogProps[] = [
         whatsapp: "https://wa.me/1234567890",
       },
     },
-    relatedPosts: [
-      {
-        slug: "wedding-venue-reviews",
-        title: "Top Wedding Venues in 2024",
-        subtitle: "Discover the Best Places to Host Your Wedding",
-        category: "Venues",
-        tags: ["wedding", "venues"],
-        image: "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-        content: "Find the most beautiful wedding venues...",
-        author: {
-          name: "Jane Smith",
-          avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-          bio: "Event planner and wedding venue specialist.",
-          social: {},
-        },
-        relatedPosts: [],
-        excerpt: "Get the inside scoop on the top wedding venues in 2024.",
-        date: "2024-03-15",
-      },
-    ],
+    
   },
   {
     slug: "choosing-perfect-venue",
@@ -143,26 +104,7 @@ export const blogs: BlogProps[] = [
         whatsapp: "https://wa.me/1234567890",
       },
     },
-    relatedPosts: [
-      {
-        slug: "wedding-venue-reviews",
-        title: "Top Wedding Venues in 2024",
-        subtitle: "Discover the Best Places to Host Your Wedding",
-        category: "Venues",
-        tags: ["wedding", "venues"],
-        image: "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-        content: "Find the most beautiful wedding venues...",
-        author: {
-          name: "Jane Smith",
-          avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-          bio: "Event planner and wedding venue specialist.",
-          social: {},
-        },
-        relatedPosts: [],
-        excerpt: "Discover the Best Places to Host Your Wedding",
-        date: "2024-10-11",
-      },
-    ],
+    
   },
   {
     slug: "ultimate-wedding-photography-guide",
@@ -188,7 +130,7 @@ export const blogs: BlogProps[] = [
         whatsapp: "https://wa.me/1234567890",
       },
     },
-    relatedPosts: []
+    
   },
   {
     slug: "sustainable-wedding-ideas",
@@ -215,26 +157,6 @@ export const blogs: BlogProps[] = [
         whatsapp: "https://wa.me/1234567890",
       },
     },
-    relatedPosts: [
-      {
-        slug: "wedding-venue-reviews",
-        title: "Top Wedding Venues in 2024",
-        subtitle: "Discover the Best Places to Host Your Wedding",
-        category: "Venues",
-        tags: ["wedding", "venues"],
-        image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3",
-        content: "Find the most beautiful wedding venues...",
-        author: {
-          name: "Jane Smith",
-          avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
-          bio: "Event planner and wedding venue specialist.",
-          social: {},
-        },
-        relatedPosts: [],
-        excerpt: "Discover the best wedding venues in 2024.",
-        date: "2024-02-20",
-      },
-    ],
   },
   {
     slug: "wedding-venue-reviews",
@@ -260,7 +182,6 @@ export const blogs: BlogProps[] = [
         telegram: "https://t.me/janesmith",
       },
     },
-    relatedPosts: [],
   },
   {
     slug: "wedding-venue-reviews-2",
@@ -286,13 +207,12 @@ export const blogs: BlogProps[] = [
         telegram: "https://t.me/janedoe",
       },
     },
-    relatedPosts: [],
   },
 ];
 
-export function getAllBlogSlugs() {
-  return blogs.map((blog) => blog.slug);
-}
+// export function getAllBlogSlugs() {
+//   return blogs.map((blog) => blog.slug);
+// }
 
-export const getBlogBySlug = (slug: string) =>
-  blogs.find((blog) => blog.slug === slug);
+// export const getBlogBySlug = (slug: string) =>
+//   blogs.find((blog) => blog.slug === slug);

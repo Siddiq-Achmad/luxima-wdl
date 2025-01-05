@@ -4,11 +4,15 @@ import VendorDetailContent from "@/components/vendors/VendorDetailContent";
 import VendorDetailHeader from "@/components/vendors/VendorDetailHeader";
 import VendorOwnerInfo from "@/components/vendors/VendorOwnerInfo";
 import VendorReviews from "@/components/vendors/VendorReviews";
+import VendorGallery from "@/components/vendors/VendorGallery";
+import VendorServices from "@/components/vendors/VendorServices";
 import Review from "@/components/vendors/review";
 import { VendorProvider } from "@/context/VendorContext";
 import { reviews, ReviewType } from "@/lib/reviewsData";
 import { Vendor, vendors } from "@/lib/vendorData";
 import { getReviewsByVendor } from "@/utils/getReviewsByVendor";
+import { getServicesByVendor } from "@/utils/getServicesByVendor";
+import { Divider } from "@nextui-org/react";
 
 // Fungsi untuk menghasilkan params statis
 export function generateStaticParams() {
@@ -18,26 +22,41 @@ export function generateStaticParams() {
 }
 
 // Halaman Detail Vendor
-const VendorDetailPage = ({ params }: { params: { slug: string } }) => {
-  const vendor = vendors.find((v) => v.slug === params.slug);
+const VendorDetailPage = async ({ params }: { params: { slug: string } }) => {
+  const { slug } = await params;
+  const vendor = vendors.find((v) => v.slug === slug);
 
   if (!vendor) {
     return <div>Vendor not found</div>;
   }
 
   const vendorReviews = getReviewsByVendor(vendor.id);
-  console.log(vendorReviews);
+  const services = getServicesByVendor(vendor.id);
 
   return (
-    <div className="pt-20 p-4 container mx-auto max-w-7xl">
+    <div className="pt-20 p-4 container mx-auto w-full">
       <VendorProvider vendor={vendor}>
         <VendorDetailHeader />
-        <div style={{ display: "flex", gap: "2rem", marginTop: "2rem" }}>
-          <div style={{ flex: 2 }}>
+        <Divider className="my-8" />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8">
+          <div className="col-span-4 md:col-span-3">
             <VendorDetailContent />
-            <VendorReviews reviews={vendorReviews} />
+            <Divider className="my-4" />
+            <section className="my-4">
+              <h2 className="text-medium uppercase mb-4 font-semibold px-2">
+                Services
+              </h2>
+              <VendorServices services={services} />
+            </section>
+            <Divider className="my-4" />
+            <section className="my-4">
+              <h2 className="text-medium uppercase mb-4 font-semibold px-2">
+                Reviews
+              </h2>
+              <VendorReviews reviews={vendorReviews} />
+            </section>
           </div>
-          <div style={{ flex: 1 }}>
+          <div>
             <VendorOwnerInfo />
           </div>
         </div>

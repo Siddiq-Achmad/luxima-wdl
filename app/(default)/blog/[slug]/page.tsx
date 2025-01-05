@@ -1,16 +1,10 @@
 import { Metadata } from "next";
-import {
-  blogs,
-  BlogProps,
-  getBlogBySlug,
-  getAllBlogSlugs,
-} from "@/lib/blogData";
+import { blogs, BlogProps } from "@/lib/blogData";
+import { getBlogBySlug } from "@/utils/getBlogBySlug";
+import { getAllBlogSlugs } from "@/utils/getAllBlogSlugs";
 import BlogDetail from "@/components/blogs/BlogDetail";
 import AuthorInfo from "@/components/blogs/AuthorInfo";
-import RelatedPosts from "@/components/blogs/RelatedPosts";
 import CommentSection from "@/components/blogs/CommentSection";
-import { motion } from "framer-motion";
-import { title } from "@/components/primitives";
 import LatestPosts from "@/components/blogs/LatestPosts";
 import RelatedVendors from "@/components/blogs/RelatedVendors";
 import { getRelatedVendors } from "@/utils/getRelatedVendors";
@@ -21,24 +15,30 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const blog = getBlogBySlug(params.slug); // Fungsi sinkron
+  // Gunakan await jika `params.slug` adalah nilai yang memerlukan resolusi
+
+  const { slug } = await params;
+  const blog = getBlogBySlug(slug);
+
   return {
     title: blog?.title || "Blog",
     description: blog?.excerpt || "Blog Detail",
   };
 }
+
 // Generate static params
 export async function generateStaticParams() {
-  const slugs = getAllBlogSlugs();
+  const slugs = await getAllBlogSlugs(); // Harus mengembalikan array slug
   return slugs.map((slug) => ({ slug }));
 }
 
-export default function BlogDetailPage({
+export default async function BlogDetailPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const blog = getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const blog = getBlogBySlug(slug);
 
   if (!blog) {
     return <div>Blog not found</div>; // Handle missing blog case
@@ -58,7 +58,6 @@ export default function BlogDetailPage({
         {/* Kolom Kanan */}
         <div className="w-full md:w-1/3">
           <AuthorInfo author={blog.author} />
-
           <RelatedVendors vendors={relatedVendors} />
           <LatestPosts posts={blogs} />
         </div>
