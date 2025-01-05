@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { blogs, BlogProps } from "@/lib/blogData";
+import { blogs } from "@/lib/blogData";
 import { getBlogBySlug } from "@/utils/getBlogBySlug";
 import { getAllBlogSlugs } from "@/utils/getAllBlogSlugs";
 import BlogDetail from "@/components/blogs/BlogDetail";
@@ -9,11 +9,16 @@ import LatestPosts from "@/components/blogs/LatestPosts";
 import RelatedVendors from "@/components/blogs/RelatedVendors";
 import { getRelatedVendors } from "@/utils/getRelatedVendors";
 
+interface BlogProps {
+  params: {
+    slug: string;
+  };
+}
 // Metadata for SEO
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   // Gunakan await jika `params.slug` adalah nilai yang memerlukan resolusi
 
@@ -35,7 +40,7 @@ export async function generateStaticParams() {
 export default async function BlogDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
   const blog = getBlogBySlug(slug);

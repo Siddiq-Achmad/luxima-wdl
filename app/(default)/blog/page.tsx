@@ -2,8 +2,34 @@
 import { title } from "@/components/primitives";
 
 import { motion } from "framer-motion";
-import { BlogProps, blogs } from "@/lib/blogData";
+import { blogs } from "@/lib/blogData";
 import { BlogCard } from "@/components/blogs/blog-card";
+
+interface BlogProps {
+  slug: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  tags: string[];
+  excerpt: string;
+  image: string;
+  content: string;
+  date: string;
+  author: {
+    name: string;
+    avatar: string;
+    bio: string;
+    social: {
+      instagram?: string;
+      twitter?: string;
+      linkedin?: string;
+      github?: string;
+      facebook?: string;
+      telegram?: string;
+      whatsapp?: string;
+    };
+  };
+}
 
 export default function BlogPage({
   slug,
