@@ -1,5 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
-import { blogs, BlogProps } from "@/lib/blogData";
+import { blogs } from "@/lib/blogData";
 import { getBlogBySlug } from "@/utils/getBlogBySlug";
 import { getAllBlogSlugs } from "@/utils/getAllBlogSlugs";
 import BlogDetail from "@/components/blogs/BlogDetail";
@@ -8,6 +8,32 @@ import CommentSection from "@/components/blogs/CommentSection";
 import LatestPosts from "@/components/blogs/LatestPosts";
 import RelatedVendors from "@/components/blogs/RelatedVendors";
 import { getRelatedVendors } from "@/utils/getRelatedVendors";
+
+interface BlogProps {
+  slug: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  tags: string[];
+  excerpt: string;
+  image: string;
+  content: string;
+  date: string;
+  author: {
+    name: string;
+    avatar: string;
+    bio: string;
+    social: {
+      instagram?: string;
+      twitter?: string;
+      linkedin?: string;
+      github?: string;
+      facebook?: string;
+      telegram?: string;
+      whatsapp?: string;
+    };
+  };
+}
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -65,7 +91,6 @@ export default async function BlogDetailPage({
 }) {
   const slug = (await params).slug;
   const blog = getBlogBySlug(slug);
-  console.log("Slug : " + slug);
 
   if (!blog) {
     return <div>Blog not found</div>; // Handle missing blog case
@@ -86,7 +111,7 @@ export default async function BlogDetailPage({
         <div className="w-full md:w-1/3">
           <AuthorInfo author={blog.author} />
           <RelatedVendors vendors={relatedVendors} />
-          <LatestPosts posts={blogs} />
+          <LatestPosts />
         </div>
       </div>
     </div>

@@ -2,44 +2,11 @@
 import { title } from "@/components/primitives";
 
 import { motion } from "framer-motion";
-import { blogs } from "@/lib/blogData";
+import { blogs, BlogProps } from "@/lib/blogData";
 import { BlogCard } from "@/components/blogs/blog-card";
+import { getAllBlogs } from "@/utils/getAllBlogs";
 
-interface BlogProps {
-  slug: string;
-  title: string;
-  subtitle: string;
-  category: string;
-  tags: string[];
-  excerpt: string;
-  image: string;
-  content: string;
-  date: string;
-  author: {
-    name: string;
-    avatar: string;
-    bio: string;
-    social: {
-      instagram?: string;
-      twitter?: string;
-      linkedin?: string;
-      github?: string;
-      facebook?: string;
-      telegram?: string;
-      whatsapp?: string;
-    };
-  };
-}
-
-export default function BlogPage({
-  slug,
-  title,
-  excerpt,
-  image,
-  category,
-  date,
-  author,
-}: BlogProps) {
+export default function BlogPage() {
   return (
     <div className="py-4">
       {/* Blog Header */}
@@ -74,12 +41,15 @@ export default function BlogPage({
             }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {blogs.map((post) => (
-              <BlogCard key={post.slug} {...post} />
+            {blogs.map((blog) => (
+              <BlogCard key={blog.slug} {...blog} />
             ))}
           </motion.div>
         </div>
       </section>
     </div>
   );
+}
+function getAllBlogS() {
+  throw new Error("Function not implemented.");
 }

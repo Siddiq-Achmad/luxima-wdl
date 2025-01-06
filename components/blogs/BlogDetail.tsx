@@ -23,7 +23,7 @@ interface BlogDetailProps {
 }
 
 const BlogDetail: React.FC<BlogDetailProps> = ({ blog }) => {
-  const { selectedBlog } = useBlogContext();
+  //const { selectedBlog } = useBlogContext();
   return (
     <Card className="overflow-none relative w-full border-small border-foreground/10  bg-right-bottom ">
       <CardHeader className="bg-background/70 text-gary-400 dark:text-gray-200 bg-gradient-to-br from-slate-200 via-gray-200 to-slate-300 dark:from-slate-900 dark:via-gray-950 dark:to-slate-900">

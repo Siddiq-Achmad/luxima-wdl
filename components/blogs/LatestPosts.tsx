@@ -1,6 +1,6 @@
 "use client";
 // components/RelatedPosts.tsx
-import { BlogProps, blogs } from "@/lib/blogData";
+import { blogs } from "@/lib/blogData";
 import {
   Button,
   Card,
@@ -13,7 +13,7 @@ import {
 } from "@nextui-org/react";
 import { StorybookIcon } from "../icons";
 
-export default function LatestPosts({ posts }: { posts: BlogProps[] }) {
+export default function LatestPosts() {
   return (
     <div className="mt-6 w-full mb-2">
       <h4 className="font-semibold text-medium mb-4 px-2 text-right uppercase">

@@ -1,21 +1,21 @@
 
 export interface ReviewType {
-    id: number;
-    user: {
-        name: string;
-        email: string;
-        avatar: string;
-    };
+    idRev: number;
     createdAt: string;
     rating: number;
     title: string;
     content: string;
     vendorId: number;
+    user: {
+        name: string;
+        email: string;
+        avatar: string;
+    };
 }
 
 export const reviews: ReviewType[] = [
   {
-      id: 1,
+      idRev: 1,
       user: {
           name: "John Doe",
           email: "5bNl1@example.com",
@@ -28,7 +28,7 @@ export const reviews: ReviewType[] = [
       vendorId: 1,
   },
   {
-      id: 2,
+      idRev: 2,
       user: {
           name: "Jane Doe",
           email: "5bNl1@example.com",
@@ -41,7 +41,7 @@ export const reviews: ReviewType[] = [
       vendorId: 1
   },
   {
-      id: 3,
+      idRev: 3,
       user: {
           name: "Robert Doe",
           email: "5bNl1@example.com",
@@ -54,7 +54,7 @@ export const reviews: ReviewType[] = [
       vendorId: 2
   },
   {
-      id: 4,
+      idRev: 4,
       user: {
           name: "Mark Doe",
           email: "5bNl1@example.com",
@@ -67,7 +67,7 @@ export const reviews: ReviewType[] = [
       vendorId: 4
   },
   {
-      id: 5,
+      idRev: 5,
       user: {
           name: "Frank Doe",
           email: "frank@example.com",
@@ -80,7 +80,7 @@ export const reviews: ReviewType[] = [
       vendorId: 4
   },
   {
-      id: 6,
+      idRev: 6,
       user: {
           name: "Zoe Doe",
           email: "zoedoe@example.com",
@@ -93,7 +93,7 @@ export const reviews: ReviewType[] = [
       vendorId: 6
   },
   {
-      id: 7,
+      idRev: 7,
       user: {
           name: "Bob Doe",
           email: "bob@example.com",
@@ -106,7 +106,7 @@ export const reviews: ReviewType[] = [
       vendorId: 5
   },
   {
-      id: 8,
+      idRev: 8,
       user: {
           name: "Francis Doe",
           email: "francis@example.com",
@@ -119,7 +119,7 @@ export const reviews: ReviewType[] = [
       vendorId: 1
   },
   {
-      id: 9,
+      idRev: 9,
       user: {
           name: "Milan Doe",
           email: "milan@example.com",
@@ -132,7 +132,7 @@ export const reviews: ReviewType[] = [
       vendorId: 1
   },
   {
-      id: 10,
+      idRev: 10,
       user: {
           name: "John Doe",
           email: "john@example.com",
@@ -145,7 +145,7 @@ export const reviews: ReviewType[] = [
       vendorId: 1
   },
   {
-      id: 11,
+      idRev: 11,
       user: {
           name: "Jane Doe",
           email: "jane@example.com",
@@ -158,7 +158,7 @@ export const reviews: ReviewType[] = [
       vendorId: 2
   },
   {
-      id: 12,
+      idRev: 12,
       user: {
           name: "Robert Doe",
           email: "robert@example.com",

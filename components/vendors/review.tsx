@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 import { cn } from "@nextui-org/react";
 
 export type ReviewType = {
-  id: number;
+  idRev: number;
   user: {
     name: string;
     email: string;

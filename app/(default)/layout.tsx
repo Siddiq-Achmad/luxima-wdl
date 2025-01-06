@@ -11,7 +11,7 @@ export default function DefaultLayout({
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      <BlogProvider>{children}</BlogProvider>
+      {children}
       <Footer />
     </div>
   );

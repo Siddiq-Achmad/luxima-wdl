@@ -15,12 +15,12 @@ export function BlogCard({
   date,
   author,
 }: BlogProps) {
-  const { setSelectedBlog } = useBlogContext();
+  //const { setSelectedBlog } = useBlogContext();
   return (
     <Link
       key={slug}
       href={`/blog/${slug}`}
-      onClick={() => setSelectedBlog(slug)}
+      // onClick={() => setSelectedBlog(slug)}
     >
       <Card className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden group min-h-full">
         <CardHeader className="relative h-48">

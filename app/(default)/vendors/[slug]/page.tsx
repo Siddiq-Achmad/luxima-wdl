@@ -11,7 +11,7 @@ import { Vendor, vendors } from "@/lib/vendorData";
 import { getReviewsByVendor } from "@/utils/getReviewsByVendor";
 import { getServicesByVendor } from "@/utils/getServicesByVendor";
 import { Divider } from "@nextui-org/react";
-import type { Metadata, ResolvingMetadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -56,8 +56,12 @@ export function generateStaticParams() {
 }
 
 // Halaman Detail Vendor
-const VendorDetailPage = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = await params;
+export default async function VendorDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const slug = (await params).slug;
   const vendor = vendors.find((v) => v.slug === slug);
 
   if (!vendor) {
@@ -92,12 +96,10 @@ const VendorDetailPage = async ({ params }: { params: { slug: string } }) => {
           </div>
           <div className="col-span-4 lg:col-span-1">
             <VendorOwnerInfo />
-            <LatestPosts posts={[]} />
+            <LatestPosts />
           </div>
         </div>
       </VendorProvider>
     </div>
   );
-};
-
-export default VendorDetailPage;
+}

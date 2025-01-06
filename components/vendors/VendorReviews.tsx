@@ -5,7 +5,7 @@ import { Button, useDisclosure } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
 
 import CardReview from "./review-card";
-import { reviews, ReviewType } from "@/lib/reviewsData";
+import { ReviewType } from "@/lib/reviewsData";
 import ModalReview from "./modal-review";
 
 interface VendorReviewsProps {
@@ -44,31 +44,18 @@ export default function Component({ reviews }: VendorReviewsProps) {
         </Button>
       </header>
       <div className="flex flex-col gap-4">
-        {reviews.map((review) => (
+        {reviews.map((r) => (
           <CardReview
-            key={review.id}
-            content={review.content}
-            createdAt={review.createdAt}
-            rating={review.rating}
-            title={review.title}
-            user={review.user}
-            vendorId={review.vendorId}
-            id={review.id}
+            key={r.idRev}
+            content={r.content}
+            createdAt={r.createdAt}
+            rating={r.rating}
+            title={r.title}
+            user={r.user}
+            vendorId={r.vendorId}
+            idRev={r.idRev}
           />
         ))}
-        {/* <CardReview
-          content="Arcu dui vivamus arcu felis bibendum. Amet tellus cras adipiscing enim eu turpis egestas pretium. "
-          createdAt="2021-08-01T12:00:00.000Z"
-          rating={5}
-          title="Great product"
-          user={{
-            name: "John Doe",
-            email: "cH2Ow@example.com",
-            avatar: "https://i.pravatar.cc/150?u=a04258114e29026708c",
-          }}
-          vendorId={1}
-          id={undefined}
-        /> */}
       </div>
       <ModalReview
         isOpen={isOpen}

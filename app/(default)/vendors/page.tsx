@@ -27,17 +27,7 @@ const LOCATIONS = [
   "Seattle",
 ];
 
-export default function VendorsPage({
-  id,
-  slug,
-  name,
-  category,
-  rating,
-  reviewCount,
-  image,
-  location,
-  isFeatured,
-}: Vendor) {
+export default function VendorsPage() {
   return (
     <div className="pt-20">
       {/* Search Header */}
