@@ -30,9 +30,6 @@ export default function AuthorInfo({
 }) {
   return (
     <div className="w-full">
-      <h4 className="font-semibold text-medium mb-4 px-2 text-right uppercase">
-        Author Info
-      </h4>
       <Card>
         <CardHeader className="relative flex flex-col justify-end overflow-visible bg-gradient-to-br from-gray-200 via-slate-400 to-gray-300">
           <Avatar className="h-24 w-24 translate-y-14" src={author.avatar} />

@@ -2,7 +2,7 @@
 // components/CommentSection.tsx
 import { Card, Textarea, Button, CardBody } from "@nextui-org/react";
 
-export default function CommentSection({ blogSlug }: { blogSlug: string }) {
+export default function CommentSection() {
   return (
     <Card className="mt-6">
       <CardBody>

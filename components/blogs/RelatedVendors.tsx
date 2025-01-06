@@ -40,11 +40,11 @@ export default function RelatedVendors({ vendors }: { vendors: Vendor[] }) {
             className="h-40 col-span-12 sm:col-span-6 lg:col-span-4 mb-4"
             key={vendor.slug}
           >
-            <CardHeader className="absolute z-10 top-1 flex-col items-start hover:invert">
+            <CardHeader className="absolute z-10 top-1 flex-col items-start">
               <p className="text-tiny text-white/60 uppercase font-bold">
                 {vendor.location}
               </p>
-              <h4 className=" text-primary hover:invert-0 font-medium text-2xl">
+              <h4 className=" text-primary hover:text-primary-foreground font-medium text-2xl">
                 {vendor.name}
               </h4>
             </CardHeader>

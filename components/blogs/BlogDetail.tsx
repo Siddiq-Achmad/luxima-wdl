@@ -61,7 +61,11 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ blog }) => {
       </CardBody>
       <CardFooter className="bg-white/30 bottom-0 border-t-1 border-zinc-100/50 justify-between">
         <div className="px-4">
-          <p className="text-tiny">{blog.tags}</p>
+          <p className="text-tiny">
+            {blog.tags.length > 0
+              ? blog.tags.map((tag) => `#${tag} `)
+              : "#undifined"}
+          </p>
           <p className="text-tiny">{blog.date}</p>
         </div>
         <Button className="text-tiny" color="primary" radius="full" size="sm">

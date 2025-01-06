@@ -1,5 +1,6 @@
 // app/(default)/vendors/[slug]/page.tsx
 
+import LatestPosts from "@/components/blogs/LatestPosts";
 import VendorDetailContent from "@/components/vendors/VendorDetailContent";
 import VendorDetailHeader from "@/components/vendors/VendorDetailHeader";
 import VendorOwnerInfo from "@/components/vendors/VendorOwnerInfo";
@@ -10,6 +11,42 @@ import { Vendor, vendors } from "@/lib/vendorData";
 import { getReviewsByVendor } from "@/utils/getReviewsByVendor";
 import { getServicesByVendor } from "@/utils/getServicesByVendor";
 import { Divider } from "@nextui-org/react";
+import type { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { slug } = await params;
+  const vendor = vendors.find((v) => v.slug === slug);
+  return {
+    title: vendor?.name || "Vendor Detail",
+    description: vendor?.description,
+    openGraph: {
+      title: vendor?.name || "Vendor Detail",
+      description: vendor?.description,
+      images: [
+        {
+          url: vendor?.image || "",
+          width: 800,
+          height: 600,
+          alt: vendor?.name || "Vendor",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: vendor?.name || "Vendor Detail",
+      description: vendor?.description,
+      images: [vendor?.image || ""],
+    },
+  };
+}
 
 // Fungsi untuk menghasilkan params statis
 export function generateStaticParams() {
@@ -35,8 +72,8 @@ const VendorDetailPage = async ({ params }: { params: { slug: string } }) => {
       <VendorProvider vendor={vendor}>
         <VendorDetailHeader />
         <Divider className="my-8" />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8">
-          <div className="col-span-4 md:col-span-3">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-8">
+          <div className="col-span-4 lg:col-span-3">
             <VendorDetailContent />
             <Divider className="my-4" />
             <section className="my-4">
@@ -53,8 +90,9 @@ const VendorDetailPage = async ({ params }: { params: { slug: string } }) => {
               <VendorReviews reviews={vendorReviews} />
             </section>
           </div>
-          <div>
+          <div className="col-span-4 lg:col-span-1">
             <VendorOwnerInfo />
+            <LatestPosts posts={[]} />
           </div>
         </div>
       </VendorProvider>

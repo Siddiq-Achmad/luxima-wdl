@@ -44,9 +44,11 @@ export default function LatestPosts({ posts }: { posts: BlogProps[] }) {
                 <p className="text-tiny text-white/60 uppercase font-bold">
                   {post.category}
                 </p>
-                <h4 className="text-gray-200 hover:text-primary font-medium text-2xl">
-                  {post.title}
-                </h4>
+                <Link href={`/blog/${post.slug}`}>
+                  <h4 className="text-gray-200 hover:text-primary font-medium text-2xl">
+                    {post.title}
+                  </h4>
+                </Link>
                 <p className="text-tiny text-white/60 mt-4 justify-between">
                   {post.excerpt}
                 </p>

@@ -1,5 +1,5 @@
-import { Metadata } from "next";
-import { blogs } from "@/lib/blogData";
+import { Metadata, ResolvingMetadata } from "next";
+import { blogs, BlogProps } from "@/lib/blogData";
 import { getBlogBySlug } from "@/utils/getBlogBySlug";
 import { getAllBlogSlugs } from "@/utils/getAllBlogSlugs";
 import BlogDetail from "@/components/blogs/BlogDetail";
@@ -9,25 +9,40 @@ import LatestPosts from "@/components/blogs/LatestPosts";
 import RelatedVendors from "@/components/blogs/RelatedVendors";
 import { getRelatedVendors } from "@/utils/getRelatedVendors";
 
-interface BlogProps {
-  params: {
-    slug: string;
-  };
-}
-// Metadata for SEO
-export async function generateMetadata({
-  params,
-}: {
+type Props = {
   params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  // Gunakan await jika `params.slug` adalah nilai yang memerlukan resolusi
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
+// Metadata for SEO
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const { slug } = await params;
   const blog = getBlogBySlug(slug);
-
   return {
-    title: blog?.title || "Blog",
+    title: blog?.title || "Blog Detail",
     description: blog?.excerpt || "Blog Detail",
+    openGraph: {
+      title: blog?.title || "Blog Detail",
+      description: blog?.excerpt || "Blog Detail",
+      images: [
+        {
+          url: blog?.image || "",
+          width: 800,
+          height: 600,
+          alt: blog?.title || "Blog",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog?.title || "Blog Detail",
+      description: blog?.excerpt || "Blog Detail",
+      images: [blog?.image || ""],
+      creator: blog?.author.name,
+    },
   };
 }
 
@@ -37,13 +52,20 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
+// export function generateStaticParams() {
+//   return blogs.map((blog: BlogProps) => ({
+//     slug: blog.slug,
+//   }));
+// }
+
 export default async function BlogDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const slug = (await params).slug;
   const blog = getBlogBySlug(slug);
+  console.log("Slug : " + slug);
 
   if (!blog) {
     return <div>Blog not found</div>; // Handle missing blog case
@@ -57,7 +79,7 @@ export default async function BlogDetailPage({
         {/* Kolom Kiri */}
         <div className="w-full md:w-2/3">
           <BlogDetail blog={blog} />
-          <CommentSection blogSlug={blog.slug} />
+          <CommentSection />
         </div>
 
         {/* Kolom Kanan */}

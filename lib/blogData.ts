@@ -188,7 +188,7 @@ export const blogs: BlogProps[] = [
     title: "Top Wedding Venue Reviews: Your Guide to Choosing the Perfect Venue 2",
     subtitle: "Discover the best weddings venues in your area based on real reviews from real couples. 2 of 2",
     category: "Reviews",
-    tags: ["wedding", "reviews"],
+    tags: [],
     excerpt:
       "Discover the best wedding venues in your area based on real reviews from real couples. 2 of 2",
     image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3",
