@@ -10,17 +10,13 @@ import RelatedVendors from "@/components/blogs/RelatedVendors";
 import { getRelatedVendors } from "@/utils/getRelatedVendors";
 import axiosInstance from "@/lib/axios";
 
-type Props = {
-  params: Promise<{ slug: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
 // Metadata for SEO
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const { slug } = await params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const slug = (await params).slug;
   const res = await axiosInstance.get(`/blog/${slug}`);
   const blog = res.data.data;
   return {
