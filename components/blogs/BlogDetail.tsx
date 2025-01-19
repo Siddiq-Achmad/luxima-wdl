@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { BlogProps } from "@/lib/blogData";
+import { Blog } from "@/types/blog";
 
 import {
   Avatar,
@@ -19,7 +19,7 @@ import { useBlogContext } from "@/context/BlogContext";
 import { AcmeIcon } from "../icons";
 
 interface BlogDetailProps {
-  blog: BlogProps;
+  blog: Blog;
 }
 
 const BlogDetail: React.FC<BlogDetailProps> = ({ blog }) => {
@@ -51,7 +51,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ blog }) => {
         </div>
       </CardBody> */}
       <CardBody>
-        <Image src={blog.image} alt={blog.title} width="100%" height={400} />
+        <Image src={blog.image} alt={blog.title} width="100%" height="100%" />
         <div className="p-4">
           <small color="gray">{blog.excerpt}</small>
           <div className="my-4">

@@ -7,6 +7,7 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
+import { BlogProvider } from "@/context/BlogContext";
 
 export const metadata: Metadata = {
   title: {
@@ -41,7 +42,9 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <div className="relative golden">{children}</div>
+          <div className="relative golden">
+            <BlogProvider>{children}</BlogProvider>
+          </div>
         </Providers>
       </body>
     </html>

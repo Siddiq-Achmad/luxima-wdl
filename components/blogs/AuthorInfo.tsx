@@ -1,6 +1,6 @@
 "use client";
 // components/AuthorInfo.tsx
-import { BlogProps } from "@/lib/blogData";
+import { Blog } from "@/types/blog";
 import {
   Card,
   CardHeader,
@@ -23,11 +23,7 @@ import {
   WhatsappIcon,
 } from "../icons";
 
-export default function AuthorInfo({
-  author,
-}: {
-  author: BlogProps["author"];
-}) {
+export default function AuthorInfo({ author }: { author: Blog["author"] }) {
   return (
     <div className="w-full">
       <Card>
@@ -45,39 +41,39 @@ export default function AuthorInfo({
         <CardBody className="text-center mt-4">
           <div className="pb-4 pt-6">
             <h4 className="text-large font-medium">{author.name}</h4>
-            <p className="text-small text-default-400">@tony.reichert</p>
+            <p className="text-small text-default-400">{author.email}</p>
             <div className="flex gap-1 lg:gap-4 pb-1 p-4 items-center justify-center">
-              {author.social.instagram && (
+              {author.social && author.social.instagram && (
                 <Link href={author.social.instagram} isExternal>
                   <InstagramIcon />
                 </Link>
               )}
-              {author.social.twitter && (
+              {author.social && author.social.twitter && (
                 <Link href={author.social.twitter} isExternal>
                   <TwitterIcon />
                 </Link>
               )}
-              {author.social.linkedin && (
+              {author.social && author.social.linkedin && (
                 <Link href={author.social.linkedin} isExternal>
                   <LinkedinIcon />
                 </Link>
               )}
-              {author.social.github && (
+              {author.social && author.social.github && (
                 <Link href={author.social.github} isExternal>
                   <GithubIcon />
                 </Link>
               )}
-              {author.social.facebook && (
+              {author.social && author.social.telegram && (
                 <Link href={author.social.facebook} isExternal>
                   <FacebookIcon />
                 </Link>
               )}
-              {author.social.telegram && (
+              {author.social && author.social.telegram && (
                 <Link href={author.social.telegram} isExternal>
                   <TelegramIcon />
                 </Link>
               )}
-              {author.social.whatsapp && (
+              {author.social && author.social.whatsapp && (
                 <Link href={author.social.whatsapp} isExternal>
                   <WhatsappIcon />
                 </Link>

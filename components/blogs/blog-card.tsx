@@ -1,10 +1,9 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { BlogProps } from "@/lib/blogData";
-import { formatDistance } from "date-fns";
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import { useBlogContext } from "@/context/BlogContext";
+import { Blog } from "@/types/blog";
 
 export function BlogCard({
   slug,
@@ -14,8 +13,9 @@ export function BlogCard({
   category,
   date,
   author,
-}: BlogProps) {
+}: Blog) {
   //const { setSelectedBlog } = useBlogContext();
+  const { blogs, isLoading } = useBlogContext();
   return (
     <Link
       key={slug}
@@ -36,16 +36,18 @@ export function BlogCard({
             </span>
           </div>
         </CardHeader>
-        <CardBody className="p-6">
-          <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors dark:text-gray-400">
+        <CardBody className="p-6 flex justify-between">
+          <h2 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-gray-400 line-clamp-3">
             {title}
           </h2>
-          <p className="text-md mb-4 dark:text-gray-400">{excerpt}</p>
+          <p className="text-sm mb-4 dark:text-gray-400 line-clamp-5">
+            {excerpt}
+          </p>
           <div className="flex items-center">
             <div className="relative w-8 h-8 rounded-full overflow-hidden">
               <Image
-                src={author.avatar}
-                alt={author.name}
+                src={author && (author.avatar as string)}
+                alt={author && author.name}
                 fill
                 className="object-cover"
               />
@@ -55,9 +57,10 @@ export function BlogCard({
                 {author.name}
               </p>
               <p className="text-xs text-muted-foreground dark:text-gray-400">
-                {formatDistance(new Date(date), new Date(), {
+                {/* {formatDistance(new Date(date), new Date(), {
                   addSuffix: true,
-                })}
+                })} */}
+                {date}
               </p>
             </div>
           </div>

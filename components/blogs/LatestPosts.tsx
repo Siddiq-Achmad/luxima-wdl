@@ -1,6 +1,6 @@
 "use client";
 // components/RelatedPosts.tsx
-import { blogs } from "@/lib/blogData";
+import { useBlogContext } from "@/context/BlogContext";
 import {
   Button,
   Card,
@@ -14,6 +14,22 @@ import {
 import { StorybookIcon } from "../icons";
 
 export default function LatestPosts() {
+  const { blogs, isLoading } = useBlogContext();
+
+  if (isLoading)
+    return (
+      <div className=" p-8 w-full h-60 mx-auto text-center flex justify-center items-center">
+        <h1 className="text-4xl font-bold p-6">Loading ... </h1>
+        <p className="text-2xl font-light">| Fetching blog data </p>
+      </div>
+    );
+  if (!blogs)
+    return (
+      <div className=" p-8 w-full h-60 mx-auto text-center flex justify-center items-center">
+        <h1 className="text-7xl font-bold p-6">404</h1>
+        <p className="text-4xl font-light">| Blog not found</p>
+      </div>
+    );
   return (
     <div className="mt-6 w-full mb-2">
       <h4 className="font-semibold text-medium mb-4 px-2 text-right uppercase">

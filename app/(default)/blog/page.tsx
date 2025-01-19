@@ -1,12 +1,27 @@
 "use client";
 import { title } from "@/components/primitives";
-
+import { useBlogContext } from "@/context/BlogContext";
 import { motion } from "framer-motion";
-import { blogs, BlogProps } from "@/lib/blogData";
 import { BlogCard } from "@/components/blogs/blog-card";
-import { getAllBlogs } from "@/utils/getAllBlogs";
 
 export default function BlogPage() {
+  const { blogs, isLoading } = useBlogContext();
+
+  if (isLoading)
+    return (
+      <div className=" p-8 w-full h-[80vh] mx-auto text-center flex justify-center items-center">
+        <h1 className="text-4xl font-bold p-6">Loading ... </h1>
+        <p className="text-2xl font-light">| Fetching blog data </p>
+      </div>
+    );
+  if (!blogs)
+    return (
+      <div className=" p-8 w-full h-[80vh] mx-auto text-center flex justify-center items-center">
+        <h1 className="text-7xl font-bold p-6">404</h1>
+        <p className="text-4xl font-light">| Blog not found</p>
+      </div>
+    );
+
   return (
     <div className="py-4">
       {/* Blog Header */}
@@ -49,7 +64,4 @@ export default function BlogPage() {
       </section>
     </div>
   );
-}
-function getAllBlogS() {
-  throw new Error("Function not implemented.");
 }

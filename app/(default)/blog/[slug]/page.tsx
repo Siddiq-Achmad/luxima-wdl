@@ -1,5 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
-import { blogs } from "@/lib/blogData";
+
 import { getBlogBySlug } from "@/utils/getBlogBySlug";
 import { getAllBlogSlugs } from "@/utils/getAllBlogSlugs";
 import BlogDetail from "@/components/blogs/BlogDetail";
@@ -8,32 +8,7 @@ import CommentSection from "@/components/blogs/CommentSection";
 import LatestPosts from "@/components/blogs/LatestPosts";
 import RelatedVendors from "@/components/blogs/RelatedVendors";
 import { getRelatedVendors } from "@/utils/getRelatedVendors";
-
-interface BlogProps {
-  slug: string;
-  title: string;
-  subtitle: string;
-  category: string;
-  tags: string[];
-  excerpt: string;
-  image: string;
-  content: string;
-  date: string;
-  author: {
-    name: string;
-    avatar: string;
-    bio: string;
-    social: {
-      instagram?: string;
-      twitter?: string;
-      linkedin?: string;
-      github?: string;
-      facebook?: string;
-      telegram?: string;
-      whatsapp?: string;
-    };
-  };
-}
+import axiosInstance from "@/lib/axios";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -46,7 +21,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { slug } = await params;
-  const blog = getBlogBySlug(slug);
+  const res = await axiosInstance.get(`/blog/${slug}`);
+  const blog = res.data.data;
   return {
     title: blog?.title || "Blog Detail",
     description: blog?.excerpt || "Blog Detail",
@@ -72,28 +48,22 @@ export async function generateMetadata(
   };
 }
 
-// Generate static params
-export async function generateStaticParams() {
-  const slugs = await getAllBlogSlugs(); // Harus mengembalikan array slug
-  return slugs.map((slug) => ({ slug }));
-}
-
-// export function generateStaticParams() {
-//   return blogs.map((blog: BlogProps) => ({
-//     slug: blog.slug,
-//   }));
-// }
-
 export default async function BlogDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  const blog = getBlogBySlug(slug);
+  const res = await axiosInstance.get(`/blog/${slug}`);
+  const blog = res.data.data;
 
   if (!blog) {
-    return <div>Blog not found</div>; // Handle missing blog case
+    return (
+      <div className=" p-8 w-full h-[80vh] mx-auto text-center flex justify-center items-center">
+        <h1 className="text-7xl font-bold p-6">404</h1>
+        <p className="text-4xl font-light">| Blog not found</p>
+      </div>
+    ); // Handle missing blog case
   }
 
   const relatedVendors = getRelatedVendors(blog.tags);

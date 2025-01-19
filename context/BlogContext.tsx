@@ -1,50 +1,55 @@
 "use client";
 
-import { BlogProps } from "@/lib/blogData";
-import React, { createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
+import axiosInstance from "@/lib/axios";
+import { Blog } from "@/types/blog";
 
-// interface BlogContextProps {
-//   selectedBlog: string | null;
-//   setSelectedBlog: (slug: string | null) => void;
-// }
+type BlogContextType = {
+  blogs: Blog[] | null;
+  fetchBlogs: () => Promise<void>;
+  isLoading: boolean;
+};
 
-// const BlogContext = createContext<BlogContextProps | undefined>(undefined);
+const BlogContext = createContext<BlogContextType | undefined>(undefined);
 
-// export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
-//   children,
-// }) => {
-//   const [selectedBlog, setSelectedBlog] = useState<string | null>(null);
+export const BlogProvider = ({ children }: { children: ReactNode }) => {
+  const [blogs, setBlogs] = useState<Blog[] | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-//   return (
-//     <BlogContext.Provider value={{ selectedBlog, setSelectedBlog }}>
-//       {children}
-//     </BlogContext.Provider>
-//   );
-// };
+  const fetchBlogs = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axiosInstance.get("/blogs");
+      const data = response.data.data;
+      setBlogs(data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-// export const useBlogContext = () => {
-//   const context = useContext(BlogContext);
-//   if (!context) {
-//     throw new Error("useBlogContext must be used within a BlogProvider");
-//   }
-//   return context;
-// };
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
 
-const BlogContext = createContext<BlogProps | null>(null);
-
-export const BlogProvider = ({
-  children,
-  blog,
-}: {
-  children: React.ReactNode;
-  blog: BlogProps;
-}) => {
-  return <BlogContext.Provider value={blog}>{children}</BlogContext.Provider>;
+  return (
+    <BlogContext.Provider value={{ blogs, fetchBlogs, isLoading }}>
+      {children}
+    </BlogContext.Provider>
+  );
 };
 
 export const useBlogContext = () => {
   const context = useContext(BlogContext);
-  if (!context)
+  if (!context) {
     throw new Error("useBlogContext must be used within a BlogProvider");
+  }
   return context;
 };

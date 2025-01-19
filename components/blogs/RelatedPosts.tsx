@@ -1,6 +1,7 @@
 "use client";
 // components/RelatedPosts.tsx
-import { BlogProps } from "@/lib/blogData";
+import { useBlogContext } from "@/context/BlogContext";
+import { Blog } from "@/types/blog";
 import {
   Button,
   Card,
@@ -11,7 +12,14 @@ import {
   Link,
 } from "@nextui-org/react";
 
-export default function RelatedPosts({ posts }: { posts: BlogProps[] }) {
+export default function RelatedPosts({ tags }: { tags: string[] }) {
+  const { blogs } = useBlogContext();
+
+  if (!blogs) return null;
+
+  const relatedPosts = blogs.filter((blog) =>
+    blog.tags.some((tag) => tags.includes(tag))
+  );
   return (
     <div className="mt-6 w-full">
       <h4 className="font-semibold text-medium mb-4 px-2 text-right uppercase">
@@ -31,7 +39,7 @@ export default function RelatedPosts({ posts }: { posts: BlogProps[] }) {
           </CardBody>
         </Card>
       ))} */}
-      {posts.map((post) => (
+      {relatedPosts.map((post) => (
         <Card
           isFooterBlurred
           className="w-full h-60 col-span-12 sm:col-span-5"
