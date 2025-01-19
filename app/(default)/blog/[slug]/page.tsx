@@ -1,7 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
 
-import { getBlogBySlug } from "@/utils/getBlogBySlug";
-import { getAllBlogSlugs } from "@/utils/getAllBlogSlugs";
 import BlogDetail from "@/components/blogs/BlogDetail";
 import AuthorInfo from "@/components/blogs/AuthorInfo";
 import CommentSection from "@/components/blogs/CommentSection";
@@ -17,31 +15,46 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  const res = await axiosInstance.get(`/blog/${slug}`);
-  const blog = res.data.data;
-  return {
-    title: blog?.title || "Blog Detail",
-    description: blog?.excerpt || "Blog Detail",
-    openGraph: {
+  try {
+    const response = await axiosInstance.get(`/blog/${slug}`);
+    const blog = response.data.data;
+
+    if (!blog) {
+      return {
+        title: "Blog Not Found",
+        description: "The requested blog could not be found.",
+      };
+    }
+    return {
       title: blog?.title || "Blog Detail",
       description: blog?.excerpt || "Blog Detail",
-      images: [
-        {
-          url: blog?.image || "",
-          width: 800,
-          height: 600,
-          alt: blog?.title || "Blog",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: blog?.title || "Blog Detail",
-      description: blog?.excerpt || "Blog Detail",
-      images: [blog?.image || ""],
-      creator: blog?.author.name,
-    },
-  };
+      openGraph: {
+        title: blog?.title || "Blog Detail",
+        description: blog?.excerpt || "Blog Detail",
+        images: [
+          {
+            url: blog?.image || "",
+            width: 800,
+            height: 600,
+            alt: blog?.title || "Blog",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: blog?.title || "Blog Detail",
+        description: blog?.excerpt || "Blog Detail",
+        images: [blog?.image || ""],
+        creator: blog?.author.name,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching blog data:", error);
+    return {
+      title: "Error",
+      description: "An error occurred while fetching blog data.",
+    };
+  }
 }
 
 export default async function BlogDetailPage({
