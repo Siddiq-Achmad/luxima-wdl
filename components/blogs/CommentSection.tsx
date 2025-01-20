@@ -1,6 +1,6 @@
 "use client";
 // components/CommentSection.tsx
-import { Card, Textarea, Button, CardBody } from "@nextui-org/react";
+import { Card, Textarea, Button, CardBody } from "@heroui/react";
 
 export default function CommentSection() {
   return (

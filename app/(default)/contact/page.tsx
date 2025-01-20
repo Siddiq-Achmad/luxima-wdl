@@ -1,8 +1,8 @@
 "use client";
 import { title } from "@/components/primitives";
-import { Button, ButtonGroup } from "@nextui-org/button";
-import { Input } from "@nextui-org/input";
-import { Textarea } from "@nextui-org/input";
+import { Button, ButtonGroup } from "@heroui/button";
+import { Input } from "@heroui/input";
+import { Textarea } from "@heroui/input";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
 

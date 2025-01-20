@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Button, Card } from "@nextui-org/react";
+import { Button, Card, CardBody } from "@heroui/react";
 
 export default function Error({
   error,
@@ -18,11 +18,13 @@ export default function Error({
 
   return (
     <Card className="flex flex-col items-center justify-center h-screen">
-      <p className="font-bold text-lg">Something went wrong!</p>
-      <p className="mt-2 text-md">{error.message}</p>
-      <Button color="primary" onPress={reset} className="mt-4">
-        Try Again
-      </Button>
+      <CardBody className="flex items-center justify-center text-center m-4">
+        <h1 className="text-4xl font-bold p-6">Something went wrong!</h1>
+        <p className="mt-2 text-md p-6">{error.message}</p>
+        <Button color="primary" onPress={reset} className="mt-4 w-28">
+          Try Again
+        </Button>
+      </CardBody>
     </Card>
   );
 }

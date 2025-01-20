@@ -12,7 +12,7 @@ import {
   Tab,
   Chip,
   Divider,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import {
   FacebookIcon,
   GithubIcon,
@@ -29,14 +29,20 @@ export default function AuthorInfo({ author }: { author: Blog["author"] }) {
       <Card>
         <CardHeader className="relative flex flex-col justify-end overflow-visible bg-gradient-to-br from-gray-200 via-slate-400 to-gray-300">
           <Avatar className="h-24 w-24 translate-y-14" src={author.avatar} />
-          <Button
-            className="absolute right-3 top-3 bg-white/20 text-white dark:bg-black/20"
-            radius="full"
-            size="sm"
-            variant="light"
-          >
-            Author
-          </Button>
+          <div className="absolute right-3 top-3 flex gap-2">
+            {author.roles &&
+              author.roles?.map((role, index) => (
+                <Button
+                  className=" bg-white/20 text-white dark:bg-black/20 capitalize"
+                  radius="full"
+                  size="sm"
+                  variant="light"
+                  key={index}
+                >
+                  {role}
+                </Button>
+              ))}
+          </div>
         </CardHeader>
         <CardBody className="text-center mt-4">
           <div className="pb-4 pt-6">

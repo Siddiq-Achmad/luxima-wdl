@@ -10,7 +10,7 @@ import {
   CardHeader,
   Image,
   Link,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 export default function RelatedPosts({ tags }: { tags: string[] }) {
   const { blogs } = useBlogContext();

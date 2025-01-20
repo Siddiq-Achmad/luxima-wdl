@@ -7,7 +7,7 @@ import {
   Image,
   CardFooter,
   Button,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useVendor } from "@/context/VendorContext";
 import { motion } from "framer-motion";
 

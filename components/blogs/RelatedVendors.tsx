@@ -11,7 +11,7 @@ import {
   CardHeader,
   Image,
   Link,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 export default function RelatedVendors({ vendors }: { vendors: Vendor[] }) {
   return (

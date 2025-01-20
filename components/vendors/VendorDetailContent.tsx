@@ -1,5 +1,5 @@
 "use client";
-import { Card, CardBody, CardFooter, Divider, Spacer } from "@nextui-org/react";
+import { Card, CardBody, CardFooter, Divider, Spacer } from "@heroui/react";
 import { useVendor } from "@/context/VendorContext";
 import VendorReviews from "./VendorReviews";
 import { motion } from "framer-motion";

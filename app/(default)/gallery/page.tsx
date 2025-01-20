@@ -2,7 +2,7 @@
 import { title } from "@/components/primitives";
 import React, { useState, useEffect } from "react";
 import { fetchUnsplashImages } from "@/lib/unsplash";
-import { Image, Button } from "@nextui-org/react";
+import { Image, Button } from "@heroui/react";
 import {
   Modal,
   ModalContent,
@@ -10,7 +10,7 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
-} from "@nextui-org/modal";
+} from "@heroui/modal";
 import { motion } from "framer-motion";
 
 export default function GalleryPage() {

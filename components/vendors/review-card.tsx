@@ -1,7 +1,7 @@
 import type { ReviewType } from "@/lib/reviewsData";
 
 import React from "react";
-import { cn } from "@nextui-org/react";
+import { cn } from "@heroui/react";
 
 import Review from "./review";
 

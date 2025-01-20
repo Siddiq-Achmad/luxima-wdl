@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Modal, ModalBody, Image, Card, CardHeader } from "@nextui-org/react";
+import { Modal, ModalBody, Image, Card, CardHeader } from "@heroui/react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";

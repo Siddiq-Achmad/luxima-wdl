@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button, Card } from "@nextui-org/react";
+import { Card } from "@heroui/card";
+import { Button } from "@heroui/button";
 import { useRouter } from "next/navigation";
 
 export default function NotFound() {

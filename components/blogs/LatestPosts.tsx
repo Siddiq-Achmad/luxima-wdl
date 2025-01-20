@@ -10,7 +10,7 @@ import {
   Image,
   Link,
   LinkIcon,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { StorybookIcon } from "../icons";
 
 export default function LatestPosts() {

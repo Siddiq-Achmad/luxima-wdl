@@ -1,5 +1,5 @@
 "use client";
-import { Card, Textarea, Button, CardBody } from "@nextui-org/react";
+import { Card, Textarea, Button, CardBody } from "@heroui/react";
 
 const VendorComments = () => {
   return (
