@@ -3,11 +3,16 @@ import { title } from "@/components/primitives";
 import { useBlogContext } from "@/context/BlogContext";
 import { motion } from "framer-motion";
 import { BlogCard } from "@/components/blogs/blog-card";
+import {
+  Pagination,
+  PaginationItem,
+  PaginationCursor,
+} from "@heroui/pagination";
 
 export default function BlogPage() {
-  const { blogs, isLoading } = useBlogContext();
+  const { blogs, pagination, loading, fetchBlogs } = useBlogContext();
 
-  if (isLoading)
+  if (loading)
     return (
       <div className=" p-8 w-full h-[80vh] mx-auto text-center flex justify-center items-center">
         <h1 className="text-4xl font-bold p-6">Loading ... </h1>
@@ -54,12 +59,21 @@ export default function BlogPage() {
               duration: 0.5,
               delay: 0.5,
             }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-6"
           >
             {blogs.map((blog) => (
               <BlogCard key={blog.slug} {...blog} />
             ))}
           </motion.div>
+          <div className="flex flex-col gap-5 justify-center item-center text-center my-8">
+            <Pagination
+              color="primary"
+              variant="faded"
+              total={pagination.totalPages}
+              initialPage={pagination.currentPage}
+              onChange={(page) => fetchBlogs(page)}
+            />
+          </div>
         </div>
       </section>
     </div>

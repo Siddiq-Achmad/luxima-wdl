@@ -10,28 +10,70 @@ import {
 import axiosInstance from "@/lib/axios";
 import { Blog } from "@/types/blog";
 
+interface Pagination {
+  currentPage: number;
+  totalPages: number;
+  perPage: number;
+  totalItems: number;
+}
 type BlogContextType = {
   blogs: Blog[] | null;
-  fetchBlogs: () => Promise<void>;
-  isLoading: boolean;
+  blog: Blog | null;
+  pagination: Pagination;
+  loading: boolean;
+  fetchBlogs: (page?: number) => Promise<void>;
+  fetchBlogDetail: (slug: string) => void;
 };
 
 const BlogContext = createContext<BlogContextType | undefined>(undefined);
 
 export const BlogProvider = ({ children }: { children: ReactNode }) => {
   const [blogs, setBlogs] = useState<Blog[] | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [blog, setBlog] = useState<Blog | null>(null);
+  const [pagination, setPagination] = useState<Pagination>({
+    currentPage: 1,
+    totalPages: 1,
+    perPage: 12,
+    totalItems: 0,
+  });
+  const [loading, setLoading] = useState(false);
 
-  const fetchBlogs = async () => {
-    setIsLoading(true);
+  // Fetch multiple blogs
+  const fetchBlogs = async (page = 1) => {
+    setLoading(true);
     try {
-      const response = await axiosInstance.get("/blogs");
-      const data = response.data.data;
+      const response = await axiosInstance.get(
+        `/blogs?page=${page}&limit=${pagination.perPage}`
+      );
+      const res = response.data;
+      const data = res.data;
       setBlogs(data);
+      setPagination({
+        currentPage: res.currentPage,
+        totalPages: res.totalPages,
+        perPage: res.perPage,
+        totalItems: res.totalItems,
+      });
     } catch (error) {
       console.error("Error fetching blogs:", error);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
+    }
+  };
+
+  // Fetch single blog detail
+  const fetchBlogDetail = async (slug: string) => {
+    setLoading(true);
+    try {
+      const response = await axiosInstance.get(`/blog/${slug}`);
+      const res = response.data;
+      const data = res.data;
+      setBlog(data);
+    } catch (error) {
+      console.error("Error fetching blog detail:", error);
+      setBlog(null);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -40,7 +82,9 @@ export const BlogProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <BlogContext.Provider value={{ blogs, fetchBlogs, isLoading }}>
+    <BlogContext.Provider
+      value={{ blogs, blog, pagination, loading, fetchBlogs, fetchBlogDetail }}
+    >
       {children}
     </BlogContext.Provider>
   );

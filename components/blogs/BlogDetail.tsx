@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Blog } from "@/types/blog";
 
 import {
@@ -14,31 +14,55 @@ import {
   Divider,
   Image,
   type CardProps,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useBlogContext } from "@/context/BlogContext";
 import { AcmeIcon } from "../icons";
+import AuthorInfo from "@/components/blogs/AuthorInfo";
+import CommentSection from "@/components/blogs/CommentSection";
+import LatestPosts from "@/components/blogs/LatestPosts";
+import RelatedVendors from "@/components/blogs/RelatedVendors";
+import { getRelatedVendors } from "@/utils/getRelatedVendors";
 
-interface BlogDetailProps {
-  blog: Blog;
-}
+export default function BlogDetailPage({ slug }: { slug: string }) {
+  const { blog, loading, fetchBlogDetail } = useBlogContext();
 
-const BlogDetail: React.FC<BlogDetailProps> = ({ blog }) => {
-  //const { selectedBlog } = useBlogContext();
+  useEffect(() => {
+    fetchBlogDetail(slug);
+  }, [slug]);
+
+  if (loading)
+    return (
+      <div className=" p-8 w-full h-[80vh] mx-auto text-center flex justify-center items-center">
+        <h1 className="text-4xl font-bold p-6">Loading ... </h1>
+        <p className="text-2xl font-light">| Fetching blog data </p>
+      </div>
+    );
+  if (!blog)
+    return (
+      <div className=" p-8 w-full h-[80vh] mx-auto text-center flex justify-center items-center">
+        <h1 className="text-7xl font-bold p-6">404</h1>
+        <p className="text-4xl font-light">| Blog not found</p>
+      </div>
+    );
   return (
-    <Card className="overflow-none relative w-full border-small border-foreground/10  bg-right-bottom ">
-      <CardHeader className="bg-background/70 text-gary-400 dark:text-gray-200 bg-gradient-to-br from-slate-200 via-gray-200 to-slate-300 dark:from-slate-900 dark:via-gray-950 dark:to-slate-900">
-        <div className="flex items-center gap-6 p-4 justify-between w-full">
-          <h2 className="text-2xl font-semibold hover:text-primary overflow-clip w-full lg:w-10/12">
-            {blog.title}
-          </h2>
-          <div className="hidden lg:flex flex-col items-end justify-center gap-2 lg:w-2/12  ">
-            <Avatar src={blog.author.avatar} />
-            <p className="text-small text-primary">{blog.author.name}</p>
-          </div>
-        </div>
-      </CardHeader>
+    <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-8 xl:p-12">
+      <div className="flex flex-col md:flex-row gap-8 p-4">
+        {/* Kolom Kiri */}
+        <div className="w-full md:w-2/3">
+          <Card className="overflow-none relative w-full border-small border-foreground/10  bg-right-bottom ">
+            <CardHeader className="bg-background/70 text-gary-400 dark:text-gray-200 bg-gradient-to-br from-slate-200 via-gray-200 to-slate-300 dark:from-slate-900 dark:via-gray-950 dark:to-slate-900">
+              <div className="flex items-center gap-6 p-4 justify-between w-full">
+                <h2 className="text-2xl font-semibold hover:text-primary overflow-clip w-full lg:w-10/12">
+                  {blog.title}
+                </h2>
+                <div className="hidden lg:flex flex-col items-end justify-center gap-2 lg:w-2/12  ">
+                  <Avatar src={blog.author.avatar} />
+                  <p className="text-small text-primary">{blog.author.name}</p>
+                </div>
+              </div>
+            </CardHeader>
 
-      {/* <CardBody className="px-3">
+            {/* <CardBody className="px-3">
         <div className="flex flex-col gap-2 px-2">
           <p className="text-large font-medium text-white/80">
             Learn from the best
@@ -50,30 +74,49 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ blog }) => {
           </p>
         </div>
       </CardBody> */}
-      <CardBody>
-        <Image src={blog.image} alt={blog.title} width="100%" height="100%" />
-        <div className="p-4">
-          <small color="gray">{blog.excerpt}</small>
-          <div className="my-4">
-            <p className="text-medium font-light">{blog.content}</p>
-          </div>
+            <CardBody>
+              <Image
+                src={blog.image}
+                alt={blog.title}
+                width="100%"
+                height="100%"
+              />
+              <div className="p-4">
+                <small color="gray">{blog.excerpt}</small>
+                <div className="my-4">
+                  <p className="text-medium font-light">{blog.content}</p>
+                </div>
+              </div>
+            </CardBody>
+            <CardFooter className="bg-white/30 bottom-0 border-t-1 border-zinc-100/50 justify-between">
+              <div className="px-4">
+                <p className="text-tiny">
+                  {blog.tags.length > 0
+                    ? blog.tags.map((tag) => `#${tag} `)
+                    : "#undifined"}
+                </p>
+                <p className="text-tiny">{blog.date}</p>
+              </div>
+              <Button
+                className="text-tiny"
+                color="primary"
+                radius="full"
+                size="sm"
+              >
+                {blog.category}
+              </Button>
+            </CardFooter>
+          </Card>
+          <CommentSection />
         </div>
-      </CardBody>
-      <CardFooter className="bg-white/30 bottom-0 border-t-1 border-zinc-100/50 justify-between">
-        <div className="px-4">
-          <p className="text-tiny">
-            {blog.tags.length > 0
-              ? blog.tags.map((tag) => `#${tag} `)
-              : "#undifined"}
-          </p>
-          <p className="text-tiny">{blog.date}</p>
-        </div>
-        <Button className="text-tiny" color="primary" radius="full" size="sm">
-          {blog.category}
-        </Button>
-      </CardFooter>
-    </Card>
-  );
-};
 
-export default BlogDetail;
+        {/* Kolom Kanan */}
+        <div className="w-full md:w-1/3">
+          <AuthorInfo author={blog.author} />
+          <RelatedVendors vendors={getRelatedVendors(blog.tags)} />
+          <LatestPosts />
+        </div>
+      </div>
+    </div>
+  );
+}

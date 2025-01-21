@@ -1,13 +1,13 @@
 "use client";
 import {
-  Navbar as NextUINavbar,
+  Navbar as HeroUINavbar,
   NavbarContent,
   NavbarMenu,
   NavbarMenuToggle,
   NavbarBrand,
   NavbarItem,
   NavbarMenuItem,
-} from "@nextui-org/navbar";
+} from "@heroui/navbar";
 import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
@@ -29,10 +29,10 @@ import {
   FacebookIcon,
 } from "@/components/icons";
 import { LogIn } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const searchInput = (
     <Input
@@ -56,7 +56,7 @@ export const Navbar = () => {
   );
 
   return (
-    <NextUINavbar
+    <HeroUINavbar
       maxWidth="xl"
       position="sticky"
       isMenuOpen={isMenuOpen}
@@ -163,6 +163,6 @@ export const Navbar = () => {
           ))}
         </div>
       </NavbarMenu>
-    </NextUINavbar>
+    </HeroUINavbar>
   );
 };

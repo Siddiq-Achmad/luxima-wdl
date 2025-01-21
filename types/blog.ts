@@ -27,7 +27,8 @@ export interface Blog {
   comment?: {
     id: number;
     name: string;
-    email: string;
+    email?: string;
+    avatar?: string;
     comment: string;
     createdAt: string; 
   };
