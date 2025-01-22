@@ -15,7 +15,7 @@ export function BlogCard({
   author,
 }: Blog) {
   //const { setSelectedBlog } = useBlogContext();
-  const { blogs, isLoading } = useBlogContext();
+  const { blogs, loading } = useBlogContext();
   return (
     <Link
       key={slug}
