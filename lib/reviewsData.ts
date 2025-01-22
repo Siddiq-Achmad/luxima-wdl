@@ -1,6 +1,6 @@
 
 export interface ReviewType {
-    idRev: number;
+    RevId: number
     createdAt: string;
     rating: number;
     title: string;
@@ -15,7 +15,7 @@ export interface ReviewType {
 
 export const reviews: ReviewType[] = [
   {
-      idRev: 1,
+
       user: {
           name: "John Doe",
           email: "5bNl1@example.com",
@@ -26,9 +26,10 @@ export const reviews: ReviewType[] = [
       title: "Great product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
       vendorId: 1,
+      RevId: 1
   },
   {
-      idRev: 2,
+
       user: {
           name: "Jane Doe",
           email: "5bNl1@example.com",
@@ -38,10 +39,11 @@ export const reviews: ReviewType[] = [
       rating: 4,
       title: "Fantastic product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      vendorId: 1
+      vendorId: 1,
+      RevId: 2
   },
   {
-      idRev: 3,
+
       user: {
           name: "Robert Doe",
           email: "5bNl1@example.com",
@@ -51,10 +53,11 @@ export const reviews: ReviewType[] = [
       rating: 3,
       title: "Beautiful product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      vendorId: 2
+      vendorId: 2,
+      RevId: 3
   },
   {
-      idRev: 4,
+
       user: {
           name: "Mark Doe",
           email: "5bNl1@example.com",
@@ -64,10 +67,11 @@ export const reviews: ReviewType[] = [
       rating: 2,
       title: "Average product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      vendorId: 4
+      vendorId: 4,
+      RevId: 4
   },
   {
-      idRev: 5,
+
       user: {
           name: "Frank Doe",
           email: "frank@example.com",
@@ -77,10 +81,11 @@ export const reviews: ReviewType[] = [
       rating: 1,
       title: "Disappointing product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      vendorId: 4
+      vendorId: 4,
+      RevId: 5
   },
   {
-      idRev: 6,
+
       user: {
           name: "Zoe Doe",
           email: "zoedoe@example.com",
@@ -90,10 +95,11 @@ export const reviews: ReviewType[] = [
       rating: 5,
       title: "Great product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      vendorId: 6
+      vendorId: 6,
+      RevId: 6
   },
   {
-      idRev: 7,
+
       user: {
           name: "Bob Doe",
           email: "bob@example.com",
@@ -103,10 +109,11 @@ export const reviews: ReviewType[] = [
       rating: 4,
       title: "Good product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      vendorId: 5
+      vendorId: 5,
+      RevId: 7
   },
   {
-      idRev: 8,
+
       user: {
           name: "Francis Doe",
           email: "francis@example.com",
@@ -116,10 +123,11 @@ export const reviews: ReviewType[] = [
       rating: 3,
       title: "Average product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      vendorId: 1
+      vendorId: 1,
+      RevId: 8
   },
   {
-      idRev: 9,
+
       user: {
           name: "Milan Doe",
           email: "milan@example.com",
@@ -129,10 +137,11 @@ export const reviews: ReviewType[] = [
       rating: 2,
       title: "Bad product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      vendorId: 1
+      vendorId: 1,
+      RevId: 9
   },
   {
-      idRev: 10,
+
       user: {
           name: "John Doe",
           email: "john@example.com",
@@ -142,10 +151,11 @@ export const reviews: ReviewType[] = [
       rating: 5,
       title: "Great product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      vendorId: 1
+      vendorId: 1,
+      RevId: 10
   },
   {
-      idRev: 11,
+
       user: {
           name: "Jane Doe",
           email: "jane@example.com",
@@ -155,10 +165,11 @@ export const reviews: ReviewType[] = [
       rating: 4,
       title: "Fantastic product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      vendorId: 2
+      vendorId: 2,
+      RevId: 12
   },
   {
-      idRev: 12,
+
       user: {
           name: "Robert Doe",
           email: "robert@example.com",
@@ -168,7 +179,8 @@ export const reviews: ReviewType[] = [
       rating: 3,
       title: "Beautiful product",
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
-      vendorId: 2
+      vendorId: 2,
+      RevId: 13
   },
 ];
 

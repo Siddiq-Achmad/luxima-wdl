@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Blog } from "@/types/blog";
 
 import {
@@ -28,8 +28,9 @@ import { useRouter } from "next/router";
 
 export default function BlogDetailPage({ slug }: { slug: string }) {
   const { blog, previous, next, loading, fetchBlogDetail } = useBlogContext();
-  console.log("Next : ", next);
-  console.log("Previous : ", previous);
+
+  // console.log("Next : ", next);
+  // console.log("Previous : ", previous);
   useEffect(() => {
     fetchBlogDetail(slug);
   }, [slug]);

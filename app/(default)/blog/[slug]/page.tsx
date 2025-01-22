@@ -64,31 +64,4 @@ export default async function BlogDetailPage({
   const slug = (await params).slug;
 
   return <BlogDetail slug={slug} />;
-  // } catch (error: any) {
-  //   console.error("Error fetching blog data : ", error.message);
-
-  //   if (error.response?.status === 404) {
-  //     return (
-  //       <div className="container mx-auto h-screen p-4">
-  //         <div className="flex p-8 text-center h-full w-full justify-center items-center">
-  //           <h1 className="text-2xl lg:text-7xl  font-bold p-6">404</h1>
-  //           <p className="text-md lg:text-4xl font-light">| Blog not found</p>
-  //         </div>
-  //       </div>
-  //     );
-  //   }
-
-  //   return (
-  //     <div className="container mx-auto h-screen p-4">
-  //       <div className=" p-8 text-center flex  h-full w-full justify-center items-center">
-  //         <h1 className="text-xl lg:text-7xl font-bold p-6 text-danger-500">
-  //           Error
-  //         </h1>
-  //         <p className="text-md lg:text-4xl font-light">
-  //           | An error occurred. Please try again later.
-  //         </p>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 }

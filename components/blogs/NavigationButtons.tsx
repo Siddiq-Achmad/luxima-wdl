@@ -1,4 +1,10 @@
 import { Button, Tooltip } from "@heroui/react";
+import {
+  ArrowBigLeft,
+  ArrowBigLeftDashIcon,
+  ArrowBigLeftIcon,
+  ArrowBigRightIcon,
+} from "lucide-react";
 import Link from "next/link";
 
 interface NavigationProps {
@@ -12,8 +18,13 @@ export default function NavigationButtons({ previous, next }: NavigationProps) {
       {previous ? (
         <Tooltip content={previous.title} placement="bottom">
           <Link href={`/blog/${previous.slug}`} className="font-semibold">
-            <Button className="capitalize" variant="shadow">
-              {`← Latest Post`}
+            <Button
+              className="capitalize text-white"
+              variant="shadow"
+              color="primary"
+              radius="full"
+            >
+              <ArrowBigLeftIcon /> Latest Post
             </Button>
           </Link>
         </Tooltip>
@@ -24,8 +35,13 @@ export default function NavigationButtons({ previous, next }: NavigationProps) {
       {next ? (
         <Tooltip content={next.title} placement="bottom">
           <Link href={`/blog/${next.slug}`} className="font-semibold">
-            <Button className="capitalize" variant="shadow">
-              {`Next Post →`}
+            <Button
+              className="capitalize text-white"
+              variant="shadow"
+              color="primary"
+              radius="full"
+            >
+              Next Post <ArrowBigRightIcon />
             </Button>
           </Link>
         </Tooltip>

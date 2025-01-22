@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 import { cn } from "@heroui/react";
 
 export type ReviewType = {
-  idRev: number;
+  RevId: number;
   user: {
     name: string;
     email: string;
@@ -23,7 +23,17 @@ export type ReviewProps = React.HTMLAttributes<HTMLDivElement> & ReviewType;
 
 const Review = React.forwardRef<HTMLDivElement, ReviewProps>(
   (
-    { children, user, title, content, rating, createdAt, vendorId, ...props },
+    {
+      children,
+      RevId,
+      user,
+      title,
+      content,
+      rating,
+      createdAt,
+      vendorId,
+      ...props
+    },
     ref
   ) => (
     <div ref={ref} {...props}>

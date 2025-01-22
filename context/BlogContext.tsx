@@ -45,7 +45,7 @@ export const BlogProvider = ({ children }: { children: ReactNode }) => {
     perPage: 12,
     totalItems: 0,
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // Fetch multiple blogs
   const fetchBlogs = async (page = 1) => {

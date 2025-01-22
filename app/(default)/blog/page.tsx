@@ -8,9 +8,24 @@ import {
   PaginationItem,
   PaginationCursor,
 } from "@heroui/pagination";
+import PaginationButtons from "@/components/blogs/PaginationButtons";
+import { Button } from "@heroui/react";
+import { ArrowBigLeftDashIcon, ArrowBigRightDashIcon } from "lucide-react";
 
 export default function BlogPage() {
   const { blogs, pagination, loading, fetchBlogs } = useBlogContext();
+
+  const handleNext = () => {
+    if (pagination.currentPage < pagination.totalPages) {
+      fetchBlogs(pagination.currentPage + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (pagination.currentPage > 1) {
+      fetchBlogs(pagination.currentPage - 1);
+    }
+  };
 
   if (loading)
     return (
@@ -65,14 +80,36 @@ export default function BlogPage() {
               <BlogCard key={blog.slug} {...blog} />
             ))}
           </motion.div>
-          <div className="flex flex-col gap-5 justify-center item-center text-center my-8">
+          <div className="flex justify-between items-center mt-4 my-6">
+            <Button
+              color="primary"
+              variant="shadow"
+              onPress={handlePrev}
+              disabled={pagination.currentPage === 1}
+              radius="full"
+              className="text-white text-sm p-4  disabled:bg-stone-400 disabled:cursor-not-allowed"
+            >
+              <ArrowBigLeftDashIcon /> Previous
+            </Button>
             <Pagination
               color="primary"
               variant="faded"
               total={pagination.totalPages}
               initialPage={pagination.currentPage}
               onChange={(page) => fetchBlogs(page)}
+              radius="full"
+              className="text-white "
             />
+            <Button
+              color="primary"
+              variant="shadow"
+              onPress={handleNext}
+              disabled={pagination.currentPage === pagination.totalPages}
+              radius="full"
+              className="text-white text-sm p-4 disabled:bg-stone-400 disabled:cursor-not-allowed"
+            >
+              Next <ArrowBigRightDashIcon />
+            </Button>
           </div>
         </div>
       </section>

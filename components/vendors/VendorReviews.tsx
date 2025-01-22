@@ -46,14 +46,14 @@ export default function Component({ reviews }: VendorReviewsProps) {
       <div className="flex flex-col gap-4">
         {reviews.map((r) => (
           <CardReview
-            key={r.idRev}
+            key={r.RevId}
             content={r.content}
             createdAt={r.createdAt}
             rating={r.rating}
             title={r.title}
             user={r.user}
             vendorId={r.vendorId}
-            idRev={r.idRev}
+            RevId={r.RevId}
           />
         ))}
       </div>
