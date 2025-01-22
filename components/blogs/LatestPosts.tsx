@@ -14,9 +14,9 @@ import {
 import { StorybookIcon } from "../icons";
 
 export default function LatestPosts() {
-  const { blogs, isLoading } = useBlogContext();
+  const { blogs, loading } = useBlogContext();
 
-  if (isLoading)
+  if (loading)
     return (
       <div className=" p-8 w-full h-60 mx-auto text-center flex justify-center items-center">
         <h1 className="text-4xl font-bold p-6">Loading ... </h1>

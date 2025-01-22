@@ -3,9 +3,9 @@ import { BlogCard } from "@/components/blogs/blog-card";
 import { useBlogContext } from "@/context/BlogContext";
 
 export default function LatestBlog() {
-  const { blogs, isLoading } = useBlogContext();
+  const { blogs, loading } = useBlogContext();
 
-  if (isLoading)
+  if (loading)
     return (
       <div className=" p-8 w-full h-[20vh] mx-auto text-center flex justify-center items-center">
         <h1 className="text-4xl font-bold p-6">Loading ... </h1>
