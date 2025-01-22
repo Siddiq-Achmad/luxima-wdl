@@ -16,10 +16,17 @@ interface Pagination {
   perPage: number;
   totalItems: number;
 }
+
+interface Navigation {
+  slug: string;
+  title: string;
+}
 type BlogContextType = {
   blogs: Blog[] | null;
   blog: Blog | null;
   pagination: Pagination;
+  previous: Navigation | null;
+  next: Navigation | null;
   loading: boolean;
   fetchBlogs: (page?: number) => Promise<void>;
   fetchBlogDetail: (slug: string) => void;
@@ -30,6 +37,8 @@ const BlogContext = createContext<BlogContextType | undefined>(undefined);
 export const BlogProvider = ({ children }: { children: ReactNode }) => {
   const [blogs, setBlogs] = useState<Blog[] | null>(null);
   const [blog, setBlog] = useState<Blog | null>(null);
+  const [previous, setPrevious] = useState<Navigation | null>(null);
+  const [next, setNext] = useState<Navigation | null>(null);
   const [pagination, setPagination] = useState<Pagination>({
     currentPage: 1,
     totalPages: 1,
@@ -69,9 +78,13 @@ export const BlogProvider = ({ children }: { children: ReactNode }) => {
       const res = response.data;
       const data = res.data;
       setBlog(data);
+      setPrevious(res.previous);
+      setNext(res.next);
     } catch (error) {
       console.error("Error fetching blog detail:", error);
       setBlog(null);
+      setPrevious(null);
+      setNext(null);
     } finally {
       setLoading(false);
     }
@@ -83,7 +96,16 @@ export const BlogProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <BlogContext.Provider
-      value={{ blogs, blog, pagination, loading, fetchBlogs, fetchBlogDetail }}
+      value={{
+        blogs,
+        blog,
+        pagination,
+        previous,
+        next,
+        loading,
+        fetchBlogs,
+        fetchBlogDetail,
+      }}
     >
       {children}
     </BlogContext.Provider>

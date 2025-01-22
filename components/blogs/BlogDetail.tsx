@@ -22,10 +22,14 @@ import CommentSection from "@/components/blogs/CommentSection";
 import LatestPosts from "@/components/blogs/LatestPosts";
 import RelatedVendors from "@/components/blogs/RelatedVendors";
 import { getRelatedVendors } from "@/utils/getRelatedVendors";
+import NavigationButtons from "@/components/blogs/NavigationButtons";
+
+import { useRouter } from "next/router";
 
 export default function BlogDetailPage({ slug }: { slug: string }) {
-  const { blog, loading, fetchBlogDetail } = useBlogContext();
-
+  const { blog, previous, next, loading, fetchBlogDetail } = useBlogContext();
+  console.log("Next : ", next);
+  console.log("Previous : ", previous);
   useEffect(() => {
     fetchBlogDetail(slug);
   }, [slug]);
@@ -107,6 +111,7 @@ export default function BlogDetailPage({ slug }: { slug: string }) {
               </Button>
             </CardFooter>
           </Card>
+          <NavigationButtons previous={previous} next={next} />
           <CommentSection />
         </div>
 
