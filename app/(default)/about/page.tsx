@@ -10,7 +10,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[40vh] min-h-[400px] bg-gray-900">
         <Image
-          src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6"
+          src="https://images.unsplash.com/photo-1563212367-fa4315b77034"
           alt="About LUXIMA"
           fill
           className="object-cover opacity-40"
@@ -18,8 +18,12 @@ export default function AboutPage() {
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
             className="text-center text-white"
           >
             <h1 className={`${title()} text-5xl font-bold mb-4`}>About Us</h1>

@@ -12,9 +12,9 @@ import {
   Textarea,
   type ModalProps,
   Button,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
-import RatingRadioGroup from "./rating-radio-group";
+import RatingRadioGroup from "../rating-radio-group";
 
 const ModalReview = React.forwardRef<
   HTMLDivElement,

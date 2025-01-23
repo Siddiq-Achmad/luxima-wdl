@@ -2,10 +2,10 @@
 
 import React from "react";
 
-import {Button} from "@nextui-org/button";
-import {Input} from "@nextui-org/input";
-import {Link} from "@nextui-org/link";
-import {Divider} from "@nextui-org/divider";
+import { Button } from "@heroui/button";
+import { Input } from "@heroui/input";
+import { Link } from "@heroui/link";
+import { Divider } from "@heroui/divider";
 
 import { Icon } from "@iconify/react";
 import { siteConfig } from "@/config/site";

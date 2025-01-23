@@ -1,5 +1,5 @@
 import React from "react";
-import { Spacer } from "@nextui-org/react";
+import { Spacer } from "@heroui/react";
 
 import {
   Logo1,

@@ -18,7 +18,7 @@ import {
 import { useBlogContext } from "@/context/BlogContext";
 import { AcmeIcon } from "../icons";
 import AuthorInfo from "@/components/blogs/AuthorInfo";
-import CommentSection from "@/components/blogs/CommentSection";
+import CommentSection from "@/components/blogs/BlogComments";
 import LatestPosts from "@/components/blogs/LatestPosts";
 import RelatedVendors from "@/components/blogs/RelatedVendors";
 import { getRelatedVendors } from "@/utils/getRelatedVendors";
@@ -50,10 +50,10 @@ export default function BlogDetailPage({ slug }: { slug: string }) {
       </div>
     );
   return (
-    <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-8 xl:p-12">
-      <div className="flex flex-col md:flex-row gap-8 p-4">
+    <div className="container mx-auto">
+      <div className="flex flex-col lg:flex-row gap-8 p-4">
         {/* Kolom Kiri */}
-        <div className="w-full md:w-2/3">
+        <div className="w-full lg:w-2/3">
           <Card className="overflow-none relative w-full border-small border-foreground/10  bg-right-bottom ">
             <CardHeader className="bg-background/70 text-gary-400 dark:text-gray-200 bg-gradient-to-br from-slate-200 via-gray-200 to-slate-300 dark:from-slate-900 dark:via-gray-950 dark:to-slate-900">
               <div className="flex items-center gap-6 p-4 justify-between w-full">
@@ -117,7 +117,7 @@ export default function BlogDetailPage({ slug }: { slug: string }) {
         </div>
 
         {/* Kolom Kanan */}
-        <div className="w-full md:w-1/3">
+        <div className="w-full lg:w-1/3">
           <AuthorInfo author={blog.author} />
           <RelatedVendors vendors={getRelatedVendors(blog.tags)} />
           <LatestPosts />

@@ -8,7 +8,7 @@ import {
   Divider,
   Link,
   Spacer,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useVendor } from "@/context/VendorContext";
 import { motion } from "framer-motion";
 import {

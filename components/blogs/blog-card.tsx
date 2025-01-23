@@ -23,11 +23,13 @@ export function BlogCard({
       // onClick={() => setSelectedBlog(slug)}
     >
       <Card className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden group min-h-full">
-        <CardHeader className="relative h-48">
+        <CardHeader className="relative w-full h-[300px]">
           <Image
             src={image}
             alt={title}
             fill
+            sizes="100%"
+            priority
             className="object-cover transition-transform group-hover:scale-105"
           />
           <div className="absolute top-4 left-4">
@@ -49,6 +51,7 @@ export function BlogCard({
                 src={author && (author.avatar as string)}
                 alt={author && author.name}
                 fill
+                sizes="100%"
                 className="object-cover"
               />
             </div>

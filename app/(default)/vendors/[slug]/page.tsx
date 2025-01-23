@@ -10,7 +10,7 @@ import { VendorProvider } from "@/context/VendorContext";
 import { Vendor, vendors } from "@/lib/vendorData";
 import { getReviewsByVendor } from "@/utils/getReviewsByVendor";
 import { getServicesByVendor } from "@/utils/getServicesByVendor";
-import { Divider } from "@nextui-org/react";
+import { Divider } from "@heroui/react";
 import { Metadata, ResolvingMetadata } from "next";
 
 type Props = {

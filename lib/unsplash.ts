@@ -23,3 +23,22 @@ export const fetchUnsplashImages = async (query: string): Promise<UnsplashRespon
   });
   return response.data;
 };
+
+export const fetchUnsplashRandomImages = async (
+  collectionId: string,
+  count: number = 1
+) => {
+  try {
+    const response = await axios.get("https://api.unsplash.com/photos/random", {
+      params: {
+        client_id: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
+        collections: collectionId,
+        count,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching random Unsplash images:", error);
+    throw error;
+  }
+};

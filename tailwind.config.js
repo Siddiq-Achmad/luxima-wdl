@@ -23,10 +23,20 @@ module.exports = {
             from: {transform: "translateY(0)"},
             to: {transform: "translateY(calc(-50% - var(--gap)/2))"},
           },
+          'star-movement-bottom': {
+          '0%': { transform: 'translate(0%, 0%)', opacity: '1' },
+          '100%': { transform: 'translate(-100%, 0%)', opacity: '0' },
+        },
+        'star-movement-top': {
+          '0%': { transform: 'translate(0%, 0%)', opacity: '1' },
+          '100%': { transform: 'translate(100%, 0%)', opacity: '0' },
+        },
         },
         animation: {
           "scrolling-banner": "scrolling-banner var(--duration) linear infinite",
           "scrolling-banner-vertical": "scrolling-banner-vertical var(--duration) linear infinite",
+          'star-movement-bottom': 'star-movement-bottom linear infinite alternate',
+          'star-movement-top': 'star-movement-top linear infinite alternate',
         },
     },
   },

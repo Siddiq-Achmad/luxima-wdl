@@ -24,13 +24,13 @@ export interface Blog {
       whatsapp?: string;
     };
   };
-  comment?: {
+  comments?: [{
     id: number;
     name: string;
     email?: string;
     avatar?: string;
-    comment: string;
+    content: string;
     createdAt: string; 
-  };
+  }];
 }
 
