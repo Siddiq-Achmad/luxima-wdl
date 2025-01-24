@@ -2,6 +2,7 @@
 import { BlogProvider } from "@/context/BlogContext";
 import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import BackToTop from "@/components/BackToTop";
 
 export default function DefaultLayout({
   children,
@@ -12,6 +13,7 @@ export default function DefaultLayout({
     <div className="flex flex-col h-screen">
       <Navbar />
       {children}
+      <BackToTop />
       <Footer />
     </div>
   );
