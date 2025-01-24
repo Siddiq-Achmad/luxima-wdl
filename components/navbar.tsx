@@ -30,9 +30,18 @@ import {
 } from "@/components/icons";
 import { LogIn } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   const searchInput = (
     <Input
@@ -119,7 +128,7 @@ export const Navbar = () => {
         <NavbarItem className="hidden lg:flex ">
           <Button
             as={Link}
-            className="text-sm font-normal text-primary bg-default-100"
+            className="text-sm font-normal text-primary bg-default-100 "
             href={siteConfig.links.login}
             endContent={<LogIn className="text-primary" />}
             variant="flat"
