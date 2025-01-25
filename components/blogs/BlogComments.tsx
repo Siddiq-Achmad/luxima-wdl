@@ -10,8 +10,14 @@ import {
   ModalFooter,
   ModalContent,
   useDisclosure,
+  Divider,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
 } from "@heroui/react";
 import { useBlogContext } from "@/context/BlogContext";
+import { CommentDots } from "../icons";
 
 const BlogComment = () => {
   const { blog } = useBlogContext();
@@ -25,39 +31,56 @@ const BlogComment = () => {
   const handleSubmit = () => {};
 
   return (
-    <div className="blog-comment-section mt-8">
-      <h2 className="text-2xl font-bold mb-4">Comments</h2>
-
-      {/* Display Existing Comments */}
-      <div className="comments-list space-y-6">
-        {blog?.comments ? (
-          blog.comments.map((c, index) => (
-            <div key={index} className="flex items-start space-x-4">
-              <Avatar
-                src={c.avatar || "https://via.placeholder.com/150"}
-                alt={c.name}
-                size="lg"
-              />
-              <div>
-                <h4 className="font-bold text-lg">{c.name}</h4>
-                <p className="text-sm text-gray-500">{c.createdAt}</p>
-                <p className="mt-2">{c.content}</p>
+    <div className="mt-8">
+      <Card className="p-6 ">
+        <CardHeader className="justify-between mb-4">
+          <h2 className="text-xl font-semibold ">Comments</h2>
+          <CommentDots className="w-6 h-6 text-neutral-600" />
+        </CardHeader>
+        {/* Display Existing Comments */}
+        <CardBody className="px-3 py-1 mb-4 text-small text-default-400">
+          <div className="comments-list space-y-6">
+            {blog?.comments ? (
+              blog.comments.map((c, index) => (
+                <div
+                  key={index}
+                  className="flex items-start justify-between space-x-6"
+                >
+                  <Avatar
+                    src={c.avatar || "https://via.placeholder.com/150"}
+                    alt={c.user}
+                    size="lg"
+                    isBordered
+                    radius="lg"
+                    className="flex-grow w-16 w-2/10 md:w-1/12 h-16 mt-2"
+                  />
+                  <div className="flex-shrink w-10/12 md:w-11/12 text-small">
+                    <h4 className="font-semibold text-md">{c.user}</h4>
+                    <p className="text-sm text-gray-500 font-light">
+                      {c.createdAt}
+                    </p>
+                    <p className="mt-2 font-light">{c.content}</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="flex justify-center items-center">
+                <p className="text-gray-500 ">
+                  No comments yet. Be the first to comment!
+                </p>
               </div>
-            </div>
-          ))
-        ) : (
-          <p className="text-gray-500">
-            No comments yet. Be the first to comment!
+            )}
+          </div>
+        </CardBody>
+        <CardFooter className="flex justify-between">
+          <Button color="primary" onPress={onOpen}>
+            Add Comment
+          </Button>
+          <p className="text-sm font-light">
+            {blog?.comments?.length} comments
           </p>
-        )}
-      </div>
-
-      {/* Add Comment Button */}
-      <div className="mt-6">
-        <Button onPress={onOpen} color="primary">
-          Add Comment
-        </Button>
-      </div>
+        </CardFooter>
+      </Card>
 
       {/* Comment Modal */}
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur">

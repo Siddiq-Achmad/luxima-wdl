@@ -22,7 +22,7 @@ export function BlogCard({
       href={`/blog/${slug}`}
       // onClick={() => setSelectedBlog(slug)}
     >
-      <Card className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden group min-h-full">
+      <Card className=" rounded-lg shadow-md overflow-hidden group min-h-full">
         <CardHeader className="relative w-full h-[300px]">
           <Image
             src={image}

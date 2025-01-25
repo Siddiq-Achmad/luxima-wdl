@@ -1,11 +1,11 @@
-import { Button, Tooltip } from "@heroui/react";
+import { Button, Tooltip, Link } from "@heroui/react";
 import {
   ArrowBigLeft,
   ArrowBigLeftDashIcon,
   ArrowBigLeftIcon,
   ArrowBigRightIcon,
 } from "lucide-react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface NavigationProps {
   previous: { slug: string; title: string } | null;
@@ -13,37 +13,41 @@ interface NavigationProps {
 }
 
 export default function NavigationButtons({ previous, next }: NavigationProps) {
+  const router = useRouter();
+
   return (
     <div className="flex justify-between items-center my-4 p-2">
       {previous ? (
-        <Tooltip content={previous.title} placement="bottom">
-          <Link href={`/blog/${previous.slug}`} className="font-semibold">
-            <Button
-              className="capitalize text-white"
-              variant="shadow"
-              color="primary"
-              radius="full"
-            >
-              <ArrowBigLeftIcon /> Latest Post
-            </Button>
-          </Link>
+        <Tooltip
+          content={previous.title}
+          placement="bottom"
+          className="capitalize"
+        >
+          <Button
+            className="capitalize text-white"
+            variant="shadow"
+            color="primary"
+            radius="full"
+            onPress={() => router.push(`/blog/${previous.slug}`)}
+          >
+            <ArrowBigLeftIcon /> Latest Post
+          </Button>
         </Tooltip>
       ) : (
         <span />
       )}
 
       {next ? (
-        <Tooltip content={next.title} placement="bottom">
-          <Link href={`/blog/${next.slug}`} className="font-semibold">
-            <Button
-              className="capitalize text-white"
-              variant="shadow"
-              color="primary"
-              radius="full"
-            >
-              Next Post <ArrowBigRightIcon />
-            </Button>
-          </Link>
+        <Tooltip content={next.title} placement="bottom" className="capitalize">
+          <Button
+            className="capitalize text-white"
+            variant="shadow"
+            color="primary"
+            radius="full"
+            onPress={() => router.push(`/blog/${next.slug}`)}
+          >
+            Next Post <ArrowBigRightIcon />
+          </Button>
         </Tooltip>
       ) : (
         <span />

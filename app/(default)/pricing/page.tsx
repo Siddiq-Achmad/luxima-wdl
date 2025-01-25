@@ -52,7 +52,7 @@ export default function Component() {
         transition={{ duration: 0.5 }}
         className="flex max-w-xl flex-col text-center"
       >
-        <h4 className={`${title()} font-medium leading-7 text-secondary`}>
+        <h4 className={`${title()} font-medium leading-7 text-primary`}>
           Pricing
         </h4>
         <h1 className="text-4xl font-medium tracking-tight">

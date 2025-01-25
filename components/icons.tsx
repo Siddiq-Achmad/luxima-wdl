@@ -940,3 +940,47 @@ export const AcmeIcon: React.FC<IconSvgProps> = ({
     />
   </svg>
 );
+
+export const ArrowUp: React.FC<IconSvgProps> = ({
+  width = "1em",
+  height = "1em",
+  ...props
+}) => {
+  return (
+    <svg
+      fill="currentColor"
+      height={height}
+      viewBox="0 0 24 24"
+      width={width}
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M11.47 2.47a.75.75 0 0 1 1.06 0l7 6.987a.75.75 0 1 1-1.06 1.061L12.751 4.81L12.762 21a.75.75 0 0 1-1.5.002l-.01-16.194l-5.722 5.711a.75.75 0 1 1-1.06-1.061z"
+        clipRule="evenodd"
+      ></path>
+    </svg>
+  );
+};
+
+export const CommentDots: React.FC<IconSvgProps> = ({
+  width = "1em",
+  height = "1em",
+  ...props
+}) => {
+  return (
+    <svg
+      fill="currentColor"
+      height={height}
+      viewBox="0 0 24 24"
+      width={width}
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        d="M20 2H4c-1.103 0-2 .897-2 2v18l4-4h14c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2M9 12a2 2 0 1 1 .001-4.001A2 2 0 0 1 9 12m6 0a2 2 0 1 1 .001-4.001A2 2 0 0 1 15 12"
+      ></path>
+    </svg>
+  );
+};

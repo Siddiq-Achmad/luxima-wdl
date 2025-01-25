@@ -26,7 +26,7 @@ export interface Blog {
   };
   comments?: [{
     id: number;
-    name: string;
+    user: string;
     email?: string;
     avatar?: string;
     content: string;

@@ -55,7 +55,7 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <div className="relative golden">
+          <div className="relative golden dark:golden-dark">
             <BlogProvider>{children}</BlogProvider>
           </div>
         </Providers>

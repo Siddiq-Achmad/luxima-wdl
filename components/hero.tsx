@@ -58,7 +58,7 @@ export default function Hero() {
             <input
               type="text"
               placeholder="Search for vendors, venues, or services..."
-              className="w-full px-6 py-4 rounded-full text-gray-900 text-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-6 py-4 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-white p-3 rounded-full hover:bg-primary/90 transition-colors">
               <Search className="h-6 w-6" />

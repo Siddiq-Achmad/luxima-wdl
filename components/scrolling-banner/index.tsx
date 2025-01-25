@@ -61,7 +61,7 @@ const logos = [
 
 export default function ScrollingVendor() {
   return (
-    <div className="mx-auto w-full max-w-6xl px-6 py-10 sm:py-32 lg:px-8 lg:py-20 dark:invert">
+    <div className="mx-auto w-full max-w-6xl px-6 py-10 sm:py-32 lg:px-8 lg:py-20 ">
       <ScrollingBanner shouldPauseOnHover duration={50} gap="40px">
         {logos.map(({ key, logo }) => (
           <div

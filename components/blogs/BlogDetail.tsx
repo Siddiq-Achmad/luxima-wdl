@@ -25,6 +25,7 @@ import { getRelatedVendors } from "@/utils/getRelatedVendors";
 import NavigationButtons from "@/components/blogs/NavigationButtons";
 
 import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 export default function BlogDetailPage({ slug }: { slug: string }) {
   const { blog, previous, next, loading, fetchBlogDetail } = useBlogContext();
@@ -54,8 +55,8 @@ export default function BlogDetailPage({ slug }: { slug: string }) {
       <div className="flex flex-col lg:flex-row gap-8 p-4">
         {/* Kolom Kiri */}
         <div className="w-full lg:w-2/3">
-          <Card className="overflow-none relative w-full border-small border-foreground/10  bg-right-bottom ">
-            <CardHeader className="bg-background/70 text-gary-400 dark:text-gray-200 bg-gradient-to-br from-slate-200 via-gray-200 to-slate-300 dark:from-slate-900 dark:via-gray-950 dark:to-slate-900">
+          <Card className="overflow-none relative w-full border-small border-foreground/10  bg-right-bottom">
+            <CardHeader className="bg-background/70 text-gary-400 dark:text-gray-200 bg-gradient-to-bl from-orange-200 from-0% via-violet-100 via-50% to-pink-100 to-100%">
               <div className="flex items-center gap-6 p-4 justify-between w-full">
                 <h2 className="text-2xl font-semibold hover:text-primary overflow-clip w-full lg:w-10/12">
                   {blog.title}
@@ -87,7 +88,7 @@ export default function BlogDetailPage({ slug }: { slug: string }) {
                 height="100%"
               />
               <div className="p-4">
-                <small color="gray">{blog.excerpt}</small>
+                <small className="font-light">{blog.excerpt}</small>
                 <div className="my-4">
                   <p className="text-medium font-light">{blog.content}</p>
                 </div>

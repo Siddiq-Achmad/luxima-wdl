@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@heroui/react";
 import { motion } from "framer-motion";
+import { ArrowUp } from "./icons";
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,14 +43,14 @@ const BackToTop = () => {
         className={`z-[1000] right-6 bottom-6 fixed`} // Ubah posisi tombol
       >
         <Button
-          color="primary"
           onPress={scrollToTop}
           isIconOnly
+          color="primary"
           aria-label="BackToTop"
           radius="full"
-          className="p-4 flex justify-center items-center text-white"
+          className="flex justify-center items-center text-white text-lg font-semibold"
         >
-          ⬆
+          <ArrowUp />
         </Button>
       </motion.div>
     </div>

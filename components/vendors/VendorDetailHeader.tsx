@@ -23,7 +23,7 @@ const VendorDetailHeader = () => {
     >
       <Card
         isFooterBlurred
-        className="border-none w-full h-[300px] bg-gradient-to-br from-gray-200 via-gray-400 to-gray-300 dark:from-slate-900 dark:via-gray-950 dark:to-slate-900"
+        className="border-none w-full h-[300px] bg-gradient-to-bl from-orange-200 from-0% via-violet-100 via-50% to-pink-100 to-100% dark:from-slate-900 dark:via-gray-950 dark:to-slate-900"
         radius="lg"
         shadow="sm"
       >
@@ -42,10 +42,10 @@ const VendorDetailHeader = () => {
           <h3 className="font-medium text-medium mb-4 text-gray-500 dark:text-gray-400  ">
             {category}
           </h3>
-          <div className="text-gray-300 ">
+          <div className="text-neutral-600">
             Rating: {rating} ({reviewCount} reviews)
           </div>
-          <div className="text-gray-300 ">Location: {location}</div>
+          <div className="text-neutral-600">Location: {location}</div>
         </CardBody>
         <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
           <div>

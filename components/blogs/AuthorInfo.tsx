@@ -26,8 +26,8 @@ import {
 export default function AuthorInfo({ author }: { author: Blog["author"] }) {
   return (
     <div className="w-full">
-      <Card>
-        <CardHeader className="relative flex flex-col justify-end overflow-visible bg-gradient-to-br from-gray-200 via-slate-400 to-gray-300">
+      <Card className="dark:dark">
+        <CardHeader className="relative flex flex-col justify-end overflow-visible bg-gradient-to-bl from-yellow-600 from-0% via-violet-100 via-50% to-pink-100 to-100%">
           <Avatar className="h-24 w-24 translate-y-14" src={author.avatar} />
           <div className="absolute right-3 top-3 flex gap-2">
             {author.roles &&

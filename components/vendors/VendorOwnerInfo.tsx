@@ -43,7 +43,7 @@ const VendorOwnerInfo = () => {
       transition={{ type: "spring", stiffness: 50, delay: 0.2 }}
     >
       <Card>
-        <CardHeader className="relative flex flex-col justify-end overflow-visible bg-gradient-to-br from-gray-200 via-slate-400 to-gray-300">
+        <CardHeader className="relative flex flex-col justify-end overflow-visible bg-gradient-to-bl from-yellow-600 from-0% via-violet-100 via-50% to-pink-100 to-100%">
           <Avatar className="h-32 w-32 translate-y-14" src={image} />
           <Button
             className="absolute right-3 top-3 bg-white/20 text-white dark:bg-black/20"
