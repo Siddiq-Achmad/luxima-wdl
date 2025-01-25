@@ -81,7 +81,7 @@ export const siteConfig = {
     title: "LUXIMA",
     description: "Your premier destination for discovering exceptional wedding vendors and inspiration.",
     address: "Jl. Mohd Hasan No. 257, Banda Aceh, Aceh, Indonesia",
-    phone: "+62 811 611 1662",
+    phone: "(+62) 811 611 1662",
     email: "hello@luxima.id",
     website: "https://luxima.id",
     author: {

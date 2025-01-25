@@ -964,6 +964,73 @@ export const ArrowUp: React.FC<IconSvgProps> = ({
   );
 };
 
+export const ArrowDown: React.FC<IconSvgProps> = ({
+  width = "1em",
+  height = "1em",
+  ...props
+}) => {
+  return (
+    <svg
+      fill="currentColor"
+      height={height}
+      viewBox="0 0 24 24"
+      width={width}
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M12.013 2.25a.75.75 0 0 1 .75.75l-.012 16.19l5.72-5.708a.75.75 0 1 1 1.059 1.061l-7 6.988a.75.75 0 0 1-1.06 0l-7-6.988a.75.75 0 0 1 1.06-1.061l5.721 5.71L11.262 3a.75.75 0 0 1 .751-.75"
+        clipRule="evenodd"
+      ></path>
+    </svg>
+  );
+};
+
+export const ArrowLeft: React.FC<IconSvgProps> = ({
+  width = "1em",
+  height = "1em",
+  ...props
+}) => {
+  return (
+    <svg
+      fill="currentColor"
+      height={height}
+      viewBox="0 0 24 24"
+      width={width}
+      {...props}
+    >
+      <g fill="currentColor" fillRule="evenodd" clipRule="evenodd">
+        <path d="M2.461 12a.75.75 0 0 1 .75-.75l17.79.012a.75.75 0 1 1-.002 1.5L3.21 12.75a.75.75 0 0 1-.749-.75"></path>
+        <path d="M10.517 4.47a.75.75 0 0 1 .001 1.06L4.06 12l6.458 6.47a.75.75 0 0 1-1.061 1.06l-6.988-7a.75.75 0 0 1 0-1.06l6.988-7a.75.75 0 0 1 1.06 0"></path>
+      </g>
+    </svg>
+  );
+};
+
+export const ArrowRight: React.FC<IconSvgProps> = ({
+  width = "1em",
+  height = "1em",
+  ...props
+}) => {
+  return (
+    <svg
+      fill="currentColor"
+      height={height}
+      viewBox="0 0 24 24"
+      width={width}
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M13.483 4.47a.75.75 0 0 1 1.06 0l6.988 7a.75.75 0 0 1 0 1.06l-6.988 7a.75.75 0 0 1-1.061-1.06l5.709-5.719L3 12.762a.75.75 0 0 1-.002-1.5l16.194-.01l-5.711-5.722a.75.75 0 0 1 0-1.06"
+        clipRule="evenodd"
+      ></path>
+    </svg>
+  );
+};
+
 export const CommentDots: React.FC<IconSvgProps> = ({
   width = "1em",
   height = "1em",

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { vendors, Vendor } from "@/lib/vendorData";
 import { VendorCard } from "@/components/vendors/vendor-card";
+import { Typewriter } from "@/components/typewriter";
 
 const CATEGORIES = [
   "All Categories",
@@ -40,7 +41,26 @@ export default function VendorsPage() {
         >
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl font-bold text-center mb-8">
-              Find Your Perfect Wedding Vendors
+              <span>Find Your Perfect </span>
+              <Typewriter
+                text={[
+                  "Wedding Vendors",
+                  "Photographer",
+                  "Videographer",
+                  "Venues",
+                  "Florists",
+                  "Caterers",
+                  "Wedding Planners",
+                  "Musicians",
+                  "Decorators",
+                ]}
+                speed={70}
+                className="text-primary"
+                waitTime={1500}
+                deleteSpeed={40}
+                cursorChar={"_"}
+              />
+              <span> in your area</span>
             </h1>
 
             {/* Search Form */}

@@ -32,11 +32,11 @@ export interface Vendor {
     youtube?: string;
     whatsapp?: string;
   }
-  workingHours: {
+  workingHours?: {
     open: string;
     close: string;
   };
-  coordinates: {
+  coordinates?: {
     lat: number;
     lng: number;
   };

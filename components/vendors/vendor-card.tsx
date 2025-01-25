@@ -19,7 +19,7 @@ export function VendorCard({
 }: Vendor) {
   return (
     <Link href={`/vendors/${slug}`}>
-      <Card className="group bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden transition-transform hover:-translate-y-1 min-h-full">
+      <Card className="group rounded-lg shadow-md overflow-hidden transition-transform hover:-translate-y-1 min-h-full">
         <CardHeader className="relative h-48 w-full">
           <Image src={image} alt={name} fill className="object-cover" />
           <div className="absolute top-4 right-4">

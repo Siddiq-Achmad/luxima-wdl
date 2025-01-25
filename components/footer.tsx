@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="border-t">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 font-light">
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Link href={siteConfig.links.home}>
@@ -17,29 +17,29 @@ export default function Footer() {
                 </span>
               </Link>
             </div>
-            <p className="text-gray-600 mb-4">{siteConfig.info.description}</p>
-            <div className="flex space-x-4">
+            <p className=" mb-4">{siteConfig.info.description}</p>
+            <div className="flex space-x-4 ">
               <Link
                 href={siteConfig.links.instagram}
-                className="text-gray-400 hover:text-primary transition-colors"
+                className="hover:text-primary transition-colors"
               >
                 <Instagram className="h-6 w-6" />
               </Link>
               <Link
                 href={siteConfig.links.tiktok}
-                className="text-gray-400 hover:text-primary transition-colors"
+                className="hover:text-primary transition-colors"
               >
                 <TiktokIcon className="h-6 w-6" />
               </Link>
               <Link
                 href={siteConfig.links.facebook}
-                className="text-gray-400 hover:text-primary transition-colors"
+                className="hover:text-primary transition-colors"
               >
                 <Facebook className="h-6 w-6" />
               </Link>
               <Link
                 href={siteConfig.links.twitter}
-                className="text-gray-400 hover:text-primary transition-colors"
+                className="hover:text-primary transition-colors"
               >
                 <Twitter className="h-6 w-6" />
               </Link>

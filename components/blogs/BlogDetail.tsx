@@ -56,7 +56,7 @@ export default function BlogDetailPage({ slug }: { slug: string }) {
         {/* Kolom Kiri */}
         <div className="w-full lg:w-2/3">
           <Card className="overflow-none relative w-full border-small border-foreground/10  bg-right-bottom">
-            <CardHeader className="bg-background/70 text-gary-400 dark:text-gray-200 bg-gradient-to-bl from-orange-200 from-0% via-violet-100 via-50% to-pink-100 to-100%">
+            <CardHeader className="bg-background/70  bg-gradient-to-bl from-orange-200 from-0% via-violet-100 via-50% to-pink-100 to-100%">
               <div className="flex items-center gap-6 p-4 justify-between w-full">
                 <h2 className="text-2xl font-semibold hover:text-primary overflow-clip w-full lg:w-10/12">
                   {blog.title}

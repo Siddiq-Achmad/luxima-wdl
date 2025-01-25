@@ -9,6 +9,8 @@ import LatestBlog from "@/components/latest-blog";
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
 import ScrollingVendor from "@/components/scrolling-banner";
+import { Testimonials } from "@/components/testimonials";
+import { testimonials } from "@/lib/testimonialData";
 
 export default function Home() {
   return (
@@ -19,6 +21,7 @@ export default function Home() {
       <FeaturedVendors />
       <WhyChooseUs />
       <LatestBlog />
+      <Testimonials testimonials={testimonials} />
       <Footer />
     </div>
   );
