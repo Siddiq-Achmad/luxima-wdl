@@ -144,37 +144,37 @@ const VendorOwnerInfo = () => {
                 <li className="flex justify-between gap-2">
                   <p>Monday</p>
                   <span className="text-default-400 text-tiny font-light">
-                    {workingHours.open} - {workingHours.close}
+                    {workingHours?.open} - {workingHours?.close}
                   </span>
                 </li>
                 <li className="flex justify-between gap-2">
                   <p>Tuesday</p>
                   <span className="text-default-400 text-tiny font-light">
-                    {workingHours.open} - {workingHours.close}
+                    {workingHours?.open} - {workingHours?.close}
                   </span>
                 </li>
                 <li className="flex justify-between gap-2">
                   <p>Wednesday</p>
                   <span className="text-default-400 text-tiny font-light">
-                    {workingHours.open} - {workingHours.close}
+                    {workingHours?.open} - {workingHours?.close}
                   </span>
                 </li>
                 <li className="flex justify-between gap-2">
                   <p>Thursday</p>
                   <span className="text-default-400 text-tiny font-light">
-                    {workingHours.open} - {workingHours.close}
+                    {workingHours?.open} - {workingHours?.close}
                   </span>
                 </li>
                 <li className="flex justify-between gap-2">
                   <p>Friday</p>
                   <span className="text-default-400 text-tiny font-light">
-                    {workingHours.open} - {workingHours.close}
+                    {workingHours?.open} - {workingHours?.close}
                   </span>
                 </li>
                 <li className="flex justify-between gap-2">
                   <p>Saturday</p>
                   <span className="text-default-400 text-tiny font-light">
-                    {workingHours.open} - {workingHours.close}
+                    {workingHours?.open} - {workingHours?.close}
                   </span>
                 </li>
               </ul>
