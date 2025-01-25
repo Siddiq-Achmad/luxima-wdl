@@ -44,7 +44,7 @@ const BlogComment = () => {
               blog.comments.map((c, index) => (
                 <div
                   key={index}
-                  className="flex items-start justify-between space-x-6"
+                  className="flex items-start justify-start gap-2 space-x-6"
                 >
                   <Avatar
                     src={c.avatar || "https://via.placeholder.com/150"}
@@ -52,9 +52,9 @@ const BlogComment = () => {
                     size="lg"
                     isBordered
                     radius="lg"
-                    className="flex-grow w-16 w-2/10 md:w-1/12 h-16 mt-2"
+                    className="flex-none w-12 h-12 md:w-16 md:h-16 mt-2"
                   />
-                  <div className="flex-shrink w-10/12 md:w-11/12 text-small">
+                  <div className="flex-shrink text-small">
                     <h4 className="font-semibold text-md">{c.user}</h4>
                     <p className="text-sm text-gray-500 font-light">
                       {c.createdAt}
