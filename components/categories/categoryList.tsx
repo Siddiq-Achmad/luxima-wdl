@@ -4,6 +4,7 @@
 
 import { useEffect, useState } from "react";
 import  CategoryCard  from "./categoryCard";
+import { getCategories } from "@/services/categoryService";
 
 interface Category {
   name: string;
@@ -18,15 +19,10 @@ export default function CategoryList() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch("https://api.luxima.id/api/categories");
-        const result = await response.json();
-        if (result.status === "success") {
-          setCategories(result.data);
-        } else {
-          throw new Error(result.message);
-        }
+        const data = await getCategories();
+        setCategories(data);
       } catch (err) {
         setError("Failed to fetch categories");
       } finally {
@@ -34,7 +30,7 @@ export default function CategoryList() {
       }
     };
 
-    fetchCategories();
+    fetchData();
   }, []);
 
   if (loading)
@@ -44,6 +40,13 @@ export default function CategoryList() {
         <p className="text-2xl font-light">| Fetching Category Data </p>
       </div>
     );
+  if (error)
+    return (
+  <div className=" p-8 w-full h-[20vh] mx-auto text-center flex justify-center items-center ">
+        <h1 className="text-4xl font-bold p-6">Error  </h1>
+        <p className="text-2xl font-light">| {error} </p>
+      </div>
+  );
   if (!categories)
     return (
       <div className=" p-8 w-full h-[20vh] mx-auto text-center flex justify-center items-center">
@@ -51,6 +54,7 @@ export default function CategoryList() {
         <p className="text-4xl font-light">| Category not found</p>
       </div>
     );
+  
 
 
 return (
