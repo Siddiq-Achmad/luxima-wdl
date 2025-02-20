@@ -7,7 +7,7 @@ export default function LatestBlog() {
 
   if (loading)
     return (
-      <div className=" p-8 w-full h-[20vh] mx-auto text-center flex justify-center items-center">
+      <div className=" p-8 w-full h-[20vh] mx-auto text-center flex justify-center items-center ">
         <h1 className="text-4xl font-bold p-6">Loading ... </h1>
         <p className="text-2xl font-light">| Fetching blog data </p>
       </div>

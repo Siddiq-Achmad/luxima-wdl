@@ -11,6 +11,8 @@ import Footer from "@/components/footer";
 import ScrollingVendor from "@/components/scrolling-banner";
 import { Testimonials } from "@/components/testimonials";
 import { testimonials } from "@/lib/testimonialData";
+import Categories from "@/components/categories/categoryCard";
+import CategoryList from "@/components/categories/categoryList";
 
 export default function Home() {
   return (
@@ -19,6 +21,7 @@ export default function Home() {
       <Hero />
       <ScrollingVendor />
       <FeaturedVendors />
+      <CategoryList />
       <WhyChooseUs />
       <LatestBlog />
       <Testimonials testimonials={testimonials} />
