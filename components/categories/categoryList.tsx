@@ -1,17 +1,9 @@
-
-
 "use client";
 
 import { useEffect, useState } from "react";
-import  CategoryCard  from "./categoryCard";
+import CategoryCard from "./categoryCard";
 import { getCategories } from "@/services/categoryService";
-
-interface Category {
-  name: string;
-  slug: string;
-  description: string;
-  image: string;
-}
+import { Category } from "@/types/category";
 
 export default function CategoryList() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -42,11 +34,11 @@ export default function CategoryList() {
     );
   if (error)
     return (
-  <div className=" p-8 w-full h-[20vh] mx-auto text-center flex justify-center items-center ">
-        <h1 className="text-4xl font-bold p-6">Error  </h1>
+      <div className=" p-8 w-full h-[20vh] mx-auto text-center flex justify-center items-center ">
+        <h1 className="text-4xl font-bold p-6">Error </h1>
         <p className="text-2xl font-light">| {error} </p>
       </div>
-  );
+    );
   if (!categories)
     return (
       <div className=" p-8 w-full h-[20vh] mx-auto text-center flex justify-center items-center">
@@ -54,32 +46,28 @@ export default function CategoryList() {
         <p className="text-4xl font-light">| Category not found</p>
       </div>
     );
-  
 
-
-return (
+  return (
     <section className="py-12">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Categories
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Categories</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Vendor by category
           </p>
         </div>
         <div className="gap-2 md:gap-4 lg:gap-6 grid grid-cols-12 grid-rows-2">
           {categories.map((category) => (
-        <CategoryCard
-          key={category.slug}
-          name={category.name}
-          slug={category.slug}
-          description={category.description}
-          image={category.image}
-        />
-      ))}
+            <CategoryCard
+              key={category.slug}
+              name={category.name}
+              slug={category.slug}
+              description={category.description}
+              image={category.image}
+            />
+          ))}
         </div>
-        </div>
-      </section>
-)
+      </div>
+    </section>
+  );
 }

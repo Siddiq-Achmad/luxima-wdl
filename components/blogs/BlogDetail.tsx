@@ -16,7 +16,7 @@ import {
   type CardProps,
 } from "@heroui/react";
 import { useBlogContext } from "@/context/BlogContext";
-import { AcmeIcon } from "../icons";
+import { AcmeIcon, Logo } from "../icons";
 import AuthorInfo from "@/components/blogs/AuthorInfo";
 import CommentSection from "@/components/blogs/BlogComments";
 import LatestPosts from "@/components/blogs/LatestPosts";
@@ -26,6 +26,8 @@ import NavigationButtons from "@/components/blogs/NavigationButtons";
 
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
+import moment from "moment";
+import { Icon } from "@iconify/react";
 
 export default function BlogDetailPage({ slug }: { slug: string }) {
   const { blog, previous, next, loading, fetchBlogDetail } = useBlogContext();
@@ -62,8 +64,7 @@ export default function BlogDetailPage({ slug }: { slug: string }) {
                   {blog.title}
                 </h2>
                 <div className="hidden lg:flex flex-col items-end justify-center gap-2 lg:w-2/12  ">
-                  <Avatar src={blog.author.avatar} />
-                  <p className="text-small text-primary">{blog.author.name}</p>
+                  <Logo className="w-12 h-12" />
                 </div>
               </div>
             </CardHeader>
@@ -81,36 +82,52 @@ export default function BlogDetailPage({ slug }: { slug: string }) {
         </div>
       </CardBody> */}
             <CardBody>
-              <Image
-                src={blog.image}
-                alt={blog.title}
-                width="100%"
-                height="100%"
-              />
               <div className="p-4">
+                <Image
+                  src={blog.image}
+                  alt={blog.title}
+                  width="100%"
+                  height="100%"
+                  className="w-full h-full object-cover rounded-3xl mb-4"
+                />
                 <small className="font-light">{blog.excerpt}</small>
                 <div className="my-4">
                   <p className="text-medium font-light">{blog.content}</p>
                 </div>
               </div>
             </CardBody>
-            <CardFooter className="bg-white/30 bottom-0 border-t-1 border-zinc-100/50 justify-between">
-              <div className="px-4">
-                <p className="text-tiny">
-                  {blog.tags.length > 0
-                    ? blog.tags.map((tag) => `#${tag} `)
-                    : "#undifined"}
-                </p>
-                <p className="text-tiny">{blog.date}</p>
+            <CardFooter className="bg-white/30 bottom-0 border-t-1 border-zinc-100/50">
+              <div className="p-4 flex flex-col md:flex-row gap-2 justify-between md:items-center w-full h-full">
+                <div className="flex items-center gap-2">
+                  <Avatar src={blog.author.avatar} />
+                  <div>
+                    <h4 className="text-small text-primary">
+                      {blog.author.name}
+                    </h4>
+                    <p className="text-tiny font-light">{blog.author.email}</p>
+                  </div>
+                </div>
+                <div className="flex flex-col md:justify-center md:items-center">
+                  <p className="text-tiny">
+                    {blog.tags.length > 0
+                      ? blog.tags.map((tag) => `#${tag} `)
+                      : "#undifined"}
+                  </p>
+                  <p className="text-tiny">
+                    {moment(blog.date, "DD-MM-YYYY HH:mm").format(
+                      "dddd, DD MMMM YYYY - HH:mm"
+                    )}{" "}
+                  </p>
+                </div>
+                <Button
+                  className="text-tiny"
+                  color="primary"
+                  radius="full"
+                  size="sm"
+                >
+                  {blog.category}
+                </Button>
               </div>
-              <Button
-                className="text-tiny"
-                color="primary"
-                radius="full"
-                size="sm"
-              >
-                {blog.category}
-              </Button>
             </CardFooter>
           </Card>
           <NavigationButtons previous={previous} next={next} />

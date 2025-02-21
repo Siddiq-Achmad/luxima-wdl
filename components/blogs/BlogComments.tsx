@@ -10,7 +10,6 @@ import {
   ModalFooter,
   ModalContent,
   useDisclosure,
-  Divider,
   Card,
   CardHeader,
   CardBody,
@@ -18,6 +17,7 @@ import {
 } from "@heroui/react";
 import { useBlogContext } from "@/context/BlogContext";
 import { CommentDots } from "../icons";
+import moment from "moment";
 
 const BlogComment = () => {
   const { blog } = useBlogContext();
@@ -57,7 +57,7 @@ const BlogComment = () => {
                   <div className="flex-shrink text-small">
                     <h4 className="font-semibold text-md">{c.user}</h4>
                     <p className="text-sm text-gray-500 font-light">
-                      {c.createdAt}
+                      {moment(c.createdAt).format("dddd, DD MMMM YYYY - HH:mm")}
                     </p>
                     <p className="mt-2 font-light">{c.content}</p>
                   </div>

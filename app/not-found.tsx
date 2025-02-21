@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <Card className="flex flex-col items-center justify-center h-screen mx-auto p-8 golden">
       <motion.div
-        initial={{ opacity: 0, y: -200 }}
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, type: "tween" }}
         aria-hidden="true"
@@ -27,7 +27,7 @@ export default function NotFound() {
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4, ease: "easeInOut" }}
+        transition={{ duration: 1, ease: "easeInOut" }}
         className="text-8xl font-bold mb-8"
       >
         Error 404 😥
@@ -35,7 +35,7 @@ export default function NotFound() {
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6, ease: "easeInOut" }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
         className="text-2xl font-mono mb-2"
       >
         Oops! This page was not found.
@@ -43,7 +43,7 @@ export default function NotFound() {
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.8, ease: "easeInOut" }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
         className="text-md font-mono mb-10"
       >
         The link you followed may be broken, or the page may have been removed.
@@ -51,7 +51,7 @@ export default function NotFound() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ type: "spring", bounce: 0.25, delay: 1 }}
+        transition={{ type: "spring", bounce: 0.25 }}
         className="text-2xl font-mono mb-10"
       >
         <Button

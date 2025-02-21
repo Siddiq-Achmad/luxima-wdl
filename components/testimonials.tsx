@@ -2,7 +2,7 @@
 
 import { ArrowLeft, ArrowRight } from "./icons";
 import { motion, AnimatePresence } from "framer-motion";
-import { Image } from "@heroui/react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -56,7 +56,7 @@ export const Testimonials = ({
     >
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20">
         <div>
-          <div className="relative h-[40vh] w-full">
+          <div className="relative h-[40vh] w-[40vh] ">
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
                 <motion.div
@@ -65,7 +65,7 @@ export const Testimonials = ({
                     opacity: 0,
                     scale: 0.9,
                     z: -100,
-                    rotate: randomRotateY(),
+                    // rotate: randomRotateY(),
                   }}
                   animate={{
                     opacity: isActive(index) ? 1 : 0.7,
@@ -81,21 +81,21 @@ export const Testimonials = ({
                     opacity: 0,
                     scale: 0.9,
                     z: 100,
-                    rotate: randomRotateY(),
+                    // rotate: randomRotateY(),
                   }}
                   transition={{
                     duration: 0.4,
                     ease: "easeInOut",
                   }}
-                  className="absolute inset-0 origin-bottom"
+                  className="absolute inset-0 origin-bottom flex justify-center "
                 >
                   <Image
                     src={testimonial.src}
                     alt={testimonial.name}
-                    width={500}
-                    height={500}
+                    width={400}
+                    height={400}
                     draggable={false}
-                    className="h-full w-full rounded-3xl object-cover object-center"
+                    className="h-80 w-80 rounded-3xl object-cover object-center"
                   />
                 </motion.div>
               ))}
@@ -154,18 +154,18 @@ export const Testimonials = ({
               ))}
             </motion.p>
           </motion.div>
-          <div className="flex gap-4 pt-12 md:pt-0">
+          <div className="flex justify-center md:justify-start gap-4 pt-12 md:pt-0">
             <button
               onClick={handlePrev}
-              className="h-7 w-7 rounded-full bg-secondary flex items-center justify-center group/button"
+              className="h-8 w-8 rounded-full bg-primary flex items-center justify-center group/button"
             >
-              <ArrowLeft className="h-6 w-6 text-foreground group-hover/button:rotate-12 transition-transform duration-300" />
+              <ArrowLeft className="h-6 w-6 text-white group-hover/button:rotate-12 transition-transform duration-300" />
             </button>
             <button
               onClick={handleNext}
-              className="h-7 w-7 rounded-full bg-secondary flex items-center justify-center group/button"
+              className="h-8 w-8 rounded-full bg-primary flex items-center justify-center group/button"
             >
-              <ArrowRight className="h-6 w-6 text-foreground group-hover/button:-rotate-12 transition-transform duration-300" />
+              <ArrowRight className="h-6 w-6 text-white group-hover/button:-rotate-12 transition-transform duration-300" />
             </button>
           </div>
         </div>
