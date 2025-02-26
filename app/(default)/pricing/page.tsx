@@ -118,20 +118,20 @@ export default function Component() {
                 Most Popular
               </Chip>
             ) : null}
-            <CardHeader className="flex flex-col items-start gap-2 pb-6">
-              <h2 className="text-large font-medium">{tier.title}</h2>
-              <p className="text-medium text-default-500">{tier.description}</p>
+            <CardHeader className="flex flex-col items-start gap-4 pb-6">
+              <h2 className="font-medium text-xl">{tier.title}</h2>
+              <p className="text-light text-default-500">{tier.description}</p>
             </CardHeader>
             <Divider />
-            <CardBody className="gap-8">
+            <CardBody className="gap-4">
               <p className="flex items-baseline gap-1 pt-2">
-                <span className="inline bg-gradient-to-br from-foreground to-foreground-600 bg-clip-text text-4xl font-semibold leading-7 tracking-tight text-transparent">
+                <span className="inline bg-gradient-to-br from-foreground to-foreground-600 bg-clip-text text-3xl font-semibold leading-7 tracking-tight text-transparent">
                   {typeof tier.price === "string"
                     ? tier.price
                     : tier.price[selectedFrequency.key]}
                 </span>
                 {typeof tier.price !== "string" ? (
-                  <span className="text-small font-medium text-default-400">
+                  <span className="text-tiny font-light text-default-400">
                     {tier.priceSuffix
                       ? `/${tier.priceSuffix}/${selectedFrequency.priceSuffix}`
                       : `/${selectedFrequency.priceSuffix}`}

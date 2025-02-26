@@ -8,9 +8,9 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <div className="pt-16">
+    <div className="container pt-16">
       <section className="bg-primary/5 py-16">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -31,9 +31,9 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="space-y-8"
+              className="p-4"
             >
-              <div className="space-y-6">
+              <div className="p-4 flex flex-col gap-4">
                 <h2 className="text-3xl font-sans font-bold">Get in Touch</h2>
                 <p className="text-gray-600">
                   Have questions about our services? We'd love to hear from you.
@@ -41,7 +41,7 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="p-4 flex flex-col gap-4">
                 <div className="flex items-center space-x-4">
                   <MapPin className="h-5 w-5 text-gold-500" />
                   <span className="text-gray-600">
@@ -65,7 +65,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-white dark:bg-gray-950 p-8 rounded-lg shadow-sm"
+              className="bg-white dark:bg-gray-950 p-8 rounded-3xl shadow-sm"
             >
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

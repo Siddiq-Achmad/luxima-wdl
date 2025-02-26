@@ -69,14 +69,14 @@ const RandomUnsplashImages = ({
         {images.map((image) => (
           <div
             key={image.id}
-            className="cursor-pointer masonry-item break-inside-avoid overflow-hidden rounded-lg"
+            className="cursor-pointer masonry-item break-inside-avoid overflow-hidden rounded-3xl"
           >
             <Image
               isZoomed
               src={image.urls.small}
               alt={image.alt_description || "Random Unsplash Image"}
               sizes="100%"
-              className="w-full h-auto object-cover rounded-lg transition-transform hover:scale-105"
+              className="w-full h-auto object-cover rounded-3xl transition-transform hover:scale-105"
               onClick={() => openPopup(image.urls.regular)}
             />
           </div>
