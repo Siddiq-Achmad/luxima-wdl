@@ -1,8 +1,32 @@
+"use client";
+import { useVendorContext } from "@/context/VendorContext";
 import { VendorCard } from "../vendors/vendor-card";
-import { vendors } from "@/lib/vendorData";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default function FeaturedVendors() {
-  const featuredVendors = vendors.filter((vendor) => vendor.isFeatured);
+  const { vendors, loading } = useVendorContext();
+  const FeaturedVendors = vendors?.filter(
+    (vendor) => vendor.isFeatured && vendor.isActive
+  );
+
+  if (loading)
+    return (
+      <div className=" p-8 w-full h-60 mx-auto text-center flex justify-center items-center">
+        <h1 className="text-4xl font-bold p-6">Loading ... </h1>
+        <p className="text-2xl font-light">| Fetching Featured Vendor </p>
+      </div>
+    );
+  if (!vendors)
+    return (
+      <div className=" p-8 w-full h-60 mx-auto text-center flex justify-center items-center">
+        <h1 className="text-7xl font-bold p-6">404</h1>
+        <p className="text-4xl font-light">| Fuatured Vendor not found</p>
+      </div>
+    );
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
@@ -15,11 +39,28 @@ export default function FeaturedVendors() {
             professionals
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredVendors.map((vendor) => (
-            <VendorCard key={vendor.id} {...vendor} />
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> */}
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={20}
+          slidesPerView={1}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          loop={true}
+          freeMode={true}
+          className="text-primary grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 bg-transparent"
+        >
+          {FeaturedVendors?.map((vendor, index) => (
+            <SwiperSlide key={index}>
+              <VendorCard key={vendor.slug} {...vendor} />
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
+        {/* </div> */}
       </div>
     </section>
   );

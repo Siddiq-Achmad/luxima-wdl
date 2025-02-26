@@ -1,37 +1,37 @@
+import { Service } from "./service";
+import { Social } from "./social";
+
 export interface Vendor {
   id: number;
   slug: string;
   name: string;
+  address: string;
   category: string;
   rating: number;
   reviewCount: number;
-  location: string;
   description: string;
   image: string;
-  isFeatured?: boolean;
-  services: string[];
-  tags: string[];
-  owner: {
-    name: string;
-    socialMedia?: {
-      facebook?: string;
-      instagram?: string;
-      twitter?: string;
-      whatsapp?: string;
-    };
+  isFeatured: boolean;
+  isActive: boolean;
+  isVerified: boolean;
+  location: string;
+  services: Service[]; // Relasi dengan services
+  gallery?: string[];
+  tags?: string[];
+  owner?: {
+    name?: string;
+    email?: string;
+    avatar?: string;
+    bio?: string;
+    phone?: string;
+    socialMedia?: Social;
   };
-  contact: {
+  contact?: {
     phone: string;
     email: string;
+    website: string;
   };
-  social: {
-    instagram?: string;
-    twitter?: string;
-    facebook?: string;
-    tiktok?: string;
-    youtube?: string;
-    whatsapp?: string;
-  }
+  social?: Social;
   workingHours?: {
     open: string;
     close: string;
@@ -40,4 +40,16 @@ export interface Vendor {
     lat: number;
     lng: number;
   };
+  meta?: {
+    title?: string;
+    keywords?: string;
+    description?: string;
+  };
+  // location?: {
+  //   city: string;
+  //   state: string;
+  //   country: string;
+  //   zip: string;
+  //   slug: string;
+  // }
 }

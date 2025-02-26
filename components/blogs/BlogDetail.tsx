@@ -29,7 +29,7 @@ import { usePathname } from "next/navigation";
 import moment from "moment";
 import { Icon } from "@iconify/react";
 
-export default function BlogDetailPage({ slug }: { slug: string }) {
+export default function BlogDetail({ slug }: { slug: string }) {
   const { blog, previous, next, loading, fetchBlogDetail } = useBlogContext();
 
   // console.log("Next : ", next);
@@ -57,7 +57,7 @@ export default function BlogDetailPage({ slug }: { slug: string }) {
       <div className="flex flex-col lg:flex-row gap-8 p-4">
         {/* Kolom Kiri */}
         <div className="w-full lg:w-2/3">
-          <Card className="overflow-none relative w-full border-small border-foreground/10  bg-right-bottom">
+          <Card className="overflow-none relative w-full border-small border-foreground/10  bg-right-bottom rounded-3xl">
             <CardHeader className="bg-background/70  bg-gradient-to-bl from-orange-200 from-0% via-violet-100 via-50% to-pink-100 to-100%">
               <div className="flex items-center gap-6 p-4 justify-between w-full">
                 <h2 className="text-2xl font-semibold hover:text-primary overflow-clip w-full lg:w-10/12">

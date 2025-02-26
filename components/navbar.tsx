@@ -31,6 +31,7 @@ import {
 import { LogIn } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { Divider } from "@heroui/react";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -156,6 +157,9 @@ export const Navbar = () => {
               key={`${item}-${index}`}
               isActive={item.href === pathname}
             >
+              {index === siteConfig.navMenuItems.length - 2 && (
+                <Divider className="mt-4 mb-4" />
+              )}
               <Link
                 color={
                   index === 2

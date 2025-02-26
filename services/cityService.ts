@@ -1,6 +1,6 @@
 import api from "@/lib/axios";
 
-export const getLocations = async () => {
+export const getCity = async () => {
     try {
         const response = await api.get("/locations");
         return response.data.data; // Hanya ambil data lokasi

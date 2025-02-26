@@ -6,6 +6,11 @@
   --gold-primary: 41 35% 45%;
   --gold-secondary: 38 44% 85%;
   --gold-accent: 35 40% 65%;
+  --primary-color: var(--gold-primary);
+  --swiper-theme-color: hsl(
+    36.2962962962963 31.76470588235295% 49.99999999999999%
+  );
+  --swiper-pagination-color: var(--gold-primary);
 }
 
 @layer base {
@@ -110,4 +115,24 @@ img {
 img:hover {
   transform: scale(1.05);
   cursor: pointer;
+}
+
+.swiper-pagination-bullet {
+  background-color: var(--primary-color) !important;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--primary-color) !important;
+  opacity: 1;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--primary-color) !important;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: var(--primary-color);
 }

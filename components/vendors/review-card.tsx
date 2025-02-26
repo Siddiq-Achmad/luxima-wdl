@@ -9,10 +9,7 @@ export type CardReviewProps = React.HTMLAttributes<HTMLDivElement> & ReviewType;
 
 const CardReview = React.forwardRef<HTMLDivElement, CardReviewProps>(
   ({ className, ...review }, ref) => (
-    <div
-      ref={ref}
-      className={cn("rounded-medium bg-content1 p-5 shadow-small", className)}
-    >
+    <div ref={ref} className={cn("rounded-3xl p-4 shadow-small", className)}>
       <Review {...review} />
     </div>
   )

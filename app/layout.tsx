@@ -8,6 +8,7 @@ import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { BlogProvider } from "@/context/BlogContext";
+import { VendorProvider } from "@/context/VendorContext";
 
 export const metadata: Metadata = {
   title: {
@@ -56,7 +57,9 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <div className="relative golden dark:golden-dark">
-            <BlogProvider>{children}</BlogProvider>
+            <VendorProvider>
+              <BlogProvider>{children}</BlogProvider>
+            </VendorProvider>
           </div>
         </Providers>
       </body>

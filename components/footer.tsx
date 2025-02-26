@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@heroui/link";
 import { Crown, Instagram, Facebook, Twitter } from "lucide-react";
 import { TiktokIcon, Logo } from "./icons";
 import { siteConfig } from "@/config/site";
@@ -52,7 +52,8 @@ export default function Footer() {
               <li>
                 <Link
                   href="/about"
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  color="foreground"
+                  className=" hover:text-primary transition-colors"
                 >
                   About Us
                 </Link>
@@ -60,7 +61,8 @@ export default function Footer() {
               <li>
                 <Link
                   href="/vendors"
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  color="foreground"
+                  className=" hover:text-primary transition-colors"
                 >
                   Find Vendors
                 </Link>
@@ -68,7 +70,8 @@ export default function Footer() {
               <li>
                 <Link
                   href="/blog"
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  color="foreground"
+                  className=" hover:text-primary transition-colors"
                 >
                   Wedding Blog
                 </Link>
@@ -76,7 +79,8 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  color="foreground"
+                  className=" hover:text-primary transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -90,7 +94,8 @@ export default function Footer() {
               <li>
                 <Link
                   href="/venues"
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  color="foreground"
+                  className=" hover:text-primary transition-colors"
                 >
                   Wedding Venues
                 </Link>
@@ -98,7 +103,8 @@ export default function Footer() {
               <li>
                 <Link
                   href="/photographers"
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  color="foreground"
+                  className=" hover:text-primary transition-colors"
                 >
                   Photographers
                 </Link>
@@ -106,7 +112,8 @@ export default function Footer() {
               <li>
                 <Link
                   href="/florists"
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  color="foreground"
+                  className=" hover:text-primary transition-colors"
                 >
                   Florists
                 </Link>
@@ -114,7 +121,8 @@ export default function Footer() {
               <li>
                 <Link
                   href="/caterers"
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  color="foreground"
+                  className=" hover:text-primary transition-colors"
                 >
                   Caterers
                 </Link>
@@ -124,7 +132,7 @@ export default function Footer() {
 
           <div>
             <h3 className="font-semibold text-lg mb-4">Contact Us</h3>
-            <ul className="space-y-2 text-gray-600">
+            <ul className="space-y-2 ">
               <li>Email: {siteConfig.info.email}</li>
               <li>Phone: {siteConfig.info.phone}</li>
               <li>Address: {siteConfig.info.address}</li>
@@ -132,7 +140,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t mt-12 pt-8 text-center text-gray-600">
+        <div className="border-t mt-12 pt-8 text-center ">
           <p>
             &copy; {new Date().getFullYear()} {siteConfig.info.title}. All
             rights reserved.

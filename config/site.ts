@@ -18,7 +18,7 @@ export const siteConfig = {
     },
      {
       label: "Vendor",
-      href: "/vendors",
+      href: "/vendor",
     },
     {
       label: "Pricing",
@@ -48,7 +48,7 @@ export const siteConfig = {
     },
     {
       label: "Vendor",
-      href: "/vendors",
+      href: "/vendor",
     },
     {
       label: "Gallery",
@@ -62,6 +62,14 @@ export const siteConfig = {
       label: "Contact",
       href: "/contact",
     },
+    {
+      label: "Register",
+      href: "/register"
+    },
+    {
+      label: "Sign In",
+      href: "/login"
+    }
     
   ],
   links: {

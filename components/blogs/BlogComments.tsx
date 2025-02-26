@@ -32,7 +32,7 @@ const BlogComment = () => {
 
   return (
     <div className="mt-8">
-      <Card className="p-6 ">
+      <Card className="p-6 rounded-3xl">
         <CardHeader className="justify-between mb-4">
           <h2 className="text-xl font-semibold ">Comments</h2>
           <CommentDots className="w-6 h-6 text-neutral-600" />
@@ -73,7 +73,7 @@ const BlogComment = () => {
           </div>
         </CardBody>
         <CardFooter className="flex justify-between">
-          <Button color="primary" onPress={onOpen}>
+          <Button color="primary" radius="full" onPress={onOpen}>
             Add Comment
           </Button>
           <p className="text-sm font-light">

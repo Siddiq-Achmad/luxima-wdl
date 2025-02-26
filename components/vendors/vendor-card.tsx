@@ -1,13 +1,19 @@
 "use client";
 
-
 import Link from "next/link";
 import { Star } from "lucide-react";
-import { Card, CardBody, CardFooter, CardHeader, Image, Button } from "@heroui/react";
-import { Vendor } from "@/lib/vendorData";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Image,
+  Button,
+} from "@heroui/react";
+import { Vendor } from "@/types/vendor";
+import { useVendorContext } from "@/context/VendorContext";
 
 export function VendorCard({
-  id,
   slug,
   name,
   category,
@@ -17,14 +23,21 @@ export function VendorCard({
   location,
   isFeatured,
 }: Vendor) {
+  const { vendors, loading } = useVendorContext();
   return (
-    <Link href={`/vendors/${slug}`}>
-      <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-6 md:col-span-4 rounded-3xl">
+    <Link href={`/vendor/${slug}`}>
+      <Card
+        isFooterBlurred
+        className="w-full h-[300px] col-span-12 sm:col-span-6 md:col-span-4 rounded-3xl"
+      >
         <CardHeader className="absolute z-10 top-1 flex flex-col justify-between items-end">
-          
           <div className="p-2">
-            <p className="text-tiny text-white/60 uppercase font-bold text-right">{category}</p>
-            <h2 className="text-white font-medium text-4xl">{name}</h2>
+            <p className="text-tiny text-white/60 uppercase font-bold text-right">
+              {category}
+            </p>
+            <h2 className="text-white drop-shadow-md text-right font-medium text-2xl">
+              {name}
+            </h2>
           </div>
           <div className="p-2">
             {isFeatured && (
@@ -34,19 +47,24 @@ export function VendorCard({
             )}
           </div>
         </CardHeader>
-        <Image src={image} alt={name} removeWrapper
-          
-          className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"/>
+        <Image
+          src={image}
+          alt={name}
+          removeWrapper
+          className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
+        />
         <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
           <div className="flex flex-col items-start p-2">
-            <h2 className="font-semibold text-2xl text-lg uppercase group-hover:text-primary transition-colors">
+            <h2 className="font-semibold text-medium uppercase group-hover:text-primary transition-colors">
               {name}
             </h2>
-            <p className="text-sm font-light text-muted-foreground">{category}</p>
+            <p className="text-sm font-light text-muted-foreground">
+              {category}
+            </p>
           </div>
 
-          <div className="flex flex-col items-center p-2 gap-2">
-            <div className="flex items-center">
+          <div className="flex flex-col items-end p-2 gap-2">
+            <div className="flex items-end">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
@@ -54,13 +72,14 @@ export function VendorCard({
                 />
               ))}
               <span className="text-sm font-light text-muted-foreground px-2">
-              ({reviewCount})
-            </span>
+                ({reviewCount ?? "0"})
+              </span>
             </div>
-            
-            <p className="text-sm font-light text-muted-foreground">{location}</p>
+
+            <p className="text-sm font-light text-muted-foreground">
+              {location}
+            </p>
           </div>
-          
         </CardFooter>
       </Card>
 

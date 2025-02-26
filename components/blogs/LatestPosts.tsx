@@ -53,7 +53,7 @@ export default function LatestPosts() {
         ? blogs.slice(-3).map((post) => (
             <Card
               isFooterBlurred
-              className="w-full h-60 col-span-12 sm:col-span-5 mb-4 "
+              className="w-full h-60 col-span-12 sm:col-span-5 mb-4 rounded-3xl"
               key={post.slug}
             >
               <CardHeader className="absolute z-10 top-1 flex-col items-start">
