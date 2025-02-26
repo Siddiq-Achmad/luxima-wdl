@@ -1,53 +1,111 @@
-# Next.js & NextUI Template
+# Luxima Wedding Directory & Listing (Luxima-WDL)
 
-This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
+Luxima-WDL adalah aplikasi web yang dibangun menggunakan Next.js untuk menyediakan layanan pencarian vendor pernikahan, pemesanan layanan, serta sistem manajemen vendor secara efisien.
 
-[Try it on CodeSandbox](https://githubbox.com/nextui-org/next-app-template)
+## 🚀 Fitur Utama
 
-## Technologies Used
+- **Multi-Vendor Management**: Vendor dapat mendaftarkan layanan mereka.
+- **Booking & Scheduling**: Sistem pemesanan layanan pernikahan.
+- **Referral System**: Pengguna dapat mendaftar dengan kode referral.
+- **Social Media Integration**: Tautan langsung ke media sosial vendor.
+- **Interactive Gallery**: Tampilan galeri berbasis Swiper.js.
+- **Dark Mode Support**: Menggunakan Next-Themes.
+- **SEO Friendly**: Dibangun dengan Next.js dan optimasi performa.
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [NextUI v2](https://nextui.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+## 📦 Teknologi yang Digunakan
 
-## How to Use
+- **Frontend**: Next.js 15, React 19, Tailwind CSS
+- **UI Components**: Hero UI, Framer Motion, Swiper.js, ShadCN UI
+- **State Management**: React Context API
+- **Backend API**: Laravel 11 (terpisah)
+- **Database**: PostgreSQL (Neon DB)
+- **Authentication**: NextAuth.js, Laravel Passport
 
-### Use the template with create-next-app
+## 📑 Instalasi & Menjalankan Proyek
 
-To create a new project based on this template using `create-next-app`, run the following command:
+### 1️⃣ **Clone Repository**
 
 ```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
+git clone https://github.com/Siddiq-Achmad/luxima-wdl
+cd luxima-wdl
 ```
 
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+### 2️⃣ **Instalasi Dependensi**
 
 ```bash
 npm install
+# atau
+yarn install
 ```
 
-### Run the development server
+### 3️⃣ **Menjalankan Server Lokal**
 
 ```bash
 npm run dev
+# atau
+yarn dev
 ```
 
-### Setup pnpm (optional)
+Aplikasi akan berjalan di **http://localhost:3000**.
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+### 4️⃣ **Build untuk Production**
 
 ```bash
-public-hoist-pattern[]=*@nextui-org/*
+npm run build
+npm run start
 ```
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+## 📌 Struktur Proyek
 
-## License
+```
+luxima-wdl/
+├── public/           # File statis (logo, gambar, dll.)
+├── components/       # Komponen UI yang dapat digunakan ulang
+├── context/          # Context API untuk state management
+├── hooks/            # Custom hooks
+├── app/              # Folder utama App Router Next.js
+│   ├── layout.tsx    # Layout utama aplikasi
+│   ├── page.tsx      # Halaman utama
+│   ├── (dashboard)/  # Grup route untuk dashboard
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── settings/
+│   │   │   ├── page.tsx
+│   │   │   ├── notifications.tsx
+│   │   │   ├── account.tsx
+│   │   └── bookings/
+│   │       ├── page.tsx
+│   │       ├── [id].tsx
+│   ├── vendor/
+│   │   ├── [slug]/   # Halaman dinamis untuk vendor berdasarkan slug
+│   │       ├── page.tsx
+│   │       ├── gallery.tsx
+│   │       ├── services.tsx
+│   │       ├── reviews.tsx
+│
+├── styles/           # Styling menggunakan Tailwind
+├── types/            # TypeScript interfaces
+├── utils/            # Utility functions
+│
+├── package.json      # Dependencies dan scripts
+├── tailwind.config.js # Konfigurasi Tailwind CSS
+├── next.config.js    # Konfigurasi Next.js
+└── tsconfig.json     # Konfigurasi TypeScript
+```
 
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
+## 📜 Skrip yang Tersedia
+
+| Perintah        | Deskripsi                               |
+| --------------- | --------------------------------------- |
+| `npm run dev`   | Menjalankan server pengembangan         |
+| `npm run build` | Membuat build untuk produksi            |
+| `npm run start` | Menjalankan aplikasi di mode produksi   |
+| `npm run lint`  | Menjalankan ESLint untuk memeriksa kode |
+
+## 📄 Lisensi
+
+Proyek ini menggunakan lisensi **MIT**.
+
+---
+
+💡 Dibuat dengan ❤️ oleh **Luxima Team**
