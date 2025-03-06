@@ -20,9 +20,9 @@ export default function VendorOwnerInfo() {
   return (
     // <div className="w-full">
     <motion.div
-      initial={{ y: "100vh" }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 50, delay: 0.2 }}
+      initial={{ opacity: 0, x: "-100vh" }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ type: "spring", stiffness: 50 }}
     >
       <Card className="rounded-3xl">
         <CardHeader className="relative flex flex-col justify-end overflow-visible bg-gradient-to-bl from-yellow-600 from-0% via-violet-100 via-50% to-pink-100 to-100%">

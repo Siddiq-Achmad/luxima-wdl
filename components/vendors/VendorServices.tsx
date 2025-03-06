@@ -20,7 +20,7 @@ export default function VendorServices({ services }: ServicesListProps) {
     <motion.div
       initial={{ x: "-100vw" }}
       animate={{ x: 0 }}
-      transition={{ type: "spring", stiffness: 50, delay: 0.5 }}
+      transition={{ type: "spring", stiffness: 50 }}
     >
       <div className="grid gap-2  md:grid-cols-4 grid-rows-3 container mx-auto">
         {services.length > 9

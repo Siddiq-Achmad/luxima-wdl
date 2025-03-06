@@ -19,9 +19,9 @@ export default function VendorDetailContent() {
 
   return (
     <motion.div
-      initial={{ x: "100vw" }}
-      animate={{ x: 0 }}
-      transition={{ type: "spring", stiffness: 50, delay: 0.2 }}
+      initial={{ y: "100%" }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 50 }}
     >
       <VendorGallery />
       <Card className="rounded-3xl">

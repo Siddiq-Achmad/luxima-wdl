@@ -1,6 +1,6 @@
 # Luxima Wedding Directory & Listing (Luxima-WDL)
 
-Luxima-WDL adalah aplikasi web yang dibangun menggunakan Next.js untuk menyediakan layanan pencarian vendor pernikahan, pemesanan layanan, serta sistem manajemen vendor secara efisien.
+Luxima-WDL adalah aplikasi web yang dibangun menggunakan Next.js untuk menyediakan layanan pencarian vendor pern\*kahan, pemesanan layanan, serta sistem manajemen vendor secara efisien.
 
 ## 🚀 Fitur Utama
 

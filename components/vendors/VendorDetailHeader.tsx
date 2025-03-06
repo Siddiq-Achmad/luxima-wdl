@@ -15,9 +15,13 @@ export default function VendorDetailHeader() {
   const { vendor } = useVendorContext();
   return (
     <motion.div
-      initial={{ y: "-100vh" }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 50 }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
       className="mx-auto w-full px-4 "
     >
       <Card

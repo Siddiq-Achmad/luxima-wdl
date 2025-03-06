@@ -8,14 +8,14 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <div className="container pt-16">
+    <div className="pt-16 w-full">
       <section className="bg-primary/5 py-16">
         <div className="mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-2xl mx-auto"
+            className="text-center max-w-4xl mx-auto"
           >
             <h1 className={`${title()} text-4xl font-bold mb-4`}>Contact Us</h1>
             <p className="text-lg text-muted-foreground">

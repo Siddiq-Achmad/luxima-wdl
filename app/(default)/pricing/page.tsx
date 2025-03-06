@@ -107,6 +107,7 @@ export default function Component() {
             className={cn("bg-background/60 p-3 dark:bg-default-100/50", {
               "!border-small border-secondary/50": tier.mostPopular,
             })}
+            radius="lg"
             shadow="md"
           >
             {tier.mostPopular ? (
@@ -152,6 +153,7 @@ export default function Component() {
                 fullWidth
                 as={Link}
                 color="secondary"
+                radius="full"
                 href={tier.href}
                 variant={tier.buttonVariant}
               >
